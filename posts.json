@@ -1,0 +1,28 @@
+{
+  "posts": [
+    {
+      "id": "test",
+      "date": "June 3, 2017",
+      "title": "Test",
+      "subtitle": "yolo"
+    },
+    {
+      "id": "test2",
+      "date": "June 3, 2017",
+      "title": "Test 2",
+      "subtitle": "yolo 2"
+    },
+    {
+      "id": "test3",
+      "date": "June 3, 2017",
+      "title": "Test 3",
+      "subtitle": "yolo 3"
+    },
+    {
+      "id": "test4",
+      "date": "June 3, 2017",
+      "title": "Test 4",
+      "subtitle": "yolo 4"
+    }
+  ]
+}
