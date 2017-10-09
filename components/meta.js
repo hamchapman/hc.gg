@@ -61,8 +61,12 @@ export default () => (
         font-family: -apple-system, BlinkMacSystemFont, "Open Sans", "Helvetica Neue", sans-serif;
         max-width: 650px;
         margin: auto;
-        font-size: 1rem;
-        color: #3F3F3F;
+        font-size: 1.1rem;
+        color: rgba(90, 90, 90, 1);
+      }
+
+      h1, h2, h3, h4 {
+        color: #504959;
       }
 
       h1 {
@@ -78,7 +82,7 @@ export default () => (
       }
 
       h4 {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
       }
     `}</style>
   </div>

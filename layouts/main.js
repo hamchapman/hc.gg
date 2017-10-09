@@ -13,7 +13,7 @@ export default ({ children }) => (
       </span>
 
       <span className="nav-link">
-        <Link href="/contact" prefetch><a>Contact</a></Link>
+        <Link href="/about" prefetch><a>About</a></Link>
       </span>
     </div>
 

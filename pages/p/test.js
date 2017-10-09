@@ -25,8 +25,8 @@ And a list:
   * testing
 
 
-\`\`\`
-func test() -> String {
+\`\`\`swift
+func testing() -> String {
   return "hello"
 }
 \`\`\`
@@ -34,13 +34,16 @@ func test() -> String {
 > just a little one
 
 
+> just a little one just a little one just a little one just a little one just a little one just a little one just a little one just a little one just a little one just a little one just a little one
 
+
+----
 
 ## HELP ME
 
 > what about this shit?
 
-[and a link](http://www.pointing.to/nowhere)
+of some text there's something [and a link](http://www.pointing.to/nowhere) in the middle of some other text that hopefully goes on to multiple lines
 
 <SomethingElse />
 
