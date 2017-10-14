@@ -46,6 +46,7 @@ export default () => (
         border-bottom-style: solid;
         border-bottom-width: 2px;
         -webkit-tap-highlight-color: rgba(0,0,0,0);
+        padding-bottom: 2px;
       }
 
       a:hover {

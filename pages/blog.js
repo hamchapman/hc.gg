@@ -63,6 +63,7 @@ const PostLink = ({ id, date, title, subtitle }) => (
         }
 
         .title span, .subtitle span {
+          padding-bottom: 2px;
           border-bottom: 2px solid #fff;
         }
 
