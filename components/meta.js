@@ -60,7 +60,7 @@ export default () => (
 
       body {
         font-family: -apple-system, BlinkMacSystemFont, "Open Sans", "Helvetica Neue", sans-serif;
-        max-width: 650px;
+        max-width: 750px;
         margin: auto;
         font-size: 1.1rem;
         color: rgba(90, 90, 90, 1);

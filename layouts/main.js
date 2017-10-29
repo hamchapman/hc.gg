@@ -29,7 +29,7 @@ export default ({ children }) => (
       }
 
       .nav {
-        padding-bottom: 12px;
+        padding-bottom: 20px;
         text-align: center;
         border-bottom: 1px solid #EBEBEB;
         margin-bottom: 24px;

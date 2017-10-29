@@ -69,7 +69,8 @@ const PostLink = ({ id, date, title, subtitle }) => (
 
         .titular {
           float: left;
-          width: calc(100% - 140px);
+          width: calc(100% - 142px);
+          line-height: 1.3;
         }
 
         .title {
@@ -91,7 +92,7 @@ const PostLink = ({ id, date, title, subtitle }) => (
         }
 
         .date {
-          width: 140px;
+          width: 142px;
           text-align: right;
           color: #999;
           float: right;

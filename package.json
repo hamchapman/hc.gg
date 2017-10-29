@@ -15,7 +15,7 @@
     "isomorphic-unfetch": "^2.0.0",
     "markdown-in-js": "hamchapman/markdown-in-js#master",
     "marked": "^0.3.6",
-    "next": "^4.0.0-beta.6",
+    "next": "^4.1.4",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "redbox-react": "^1.5.0"

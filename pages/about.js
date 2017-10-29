@@ -17,7 +17,7 @@ export default () => (
           <Link href="https://pusher.com"><a target="_blank" id="pusher">Pusher</a></Link>. Follow me on{' '}
           <Link href="https://twitter.com/hamchapman"><a target="_blank" id="twitter">Twitter</a></Link>, <br />
           check out my{' '}
-          <Link href="https://hc.gg/blog"><a id="blog">blog</a></Link>, see my code on{' '}
+          <Link href="/blog"><a id="blog">blog</a></Link>, see my code on{' '}
           <Link href="https://github.com/hamchapman"><a target="_blank" id="github">GitHub</a></Link> or{' '}
           <Link href="mailto:hamchapman@gmail.com"><a target="_blank" id="email">email</a></Link> me.
         </div>
