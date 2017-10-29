@@ -5,13 +5,6 @@ export default ({ children }) => (
     <article>
       { children }
     </article>
-    <style jsx>{`
-      article {
-
-      }
-
-
-    `}</style>
     <style jsx global>{`
       body {
         width: 100%;
