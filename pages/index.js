@@ -1,27 +1,22 @@
-import Page from '../layouts/main'
-import Link from 'next/link'
-import Head from 'next/head'
+import glamorous from 'glamorous';
+import { rem } from 'polished';
+
+import { Page, Link } from '../components';
+
+const ComingSoon = glamorous('div')({
+  position: 'absolute',
+  left: '0',
+  right: '0',
+  padding: `${rem(20)} ${rem(10)} 0`,
+  textAlign: 'center',
+  fontSize: rem(32),
+  fontWeight: '200',
+});
 
 export default () => (
   <Page>
-    <Head>
-      <title>Hamilton Chapman</title>
-    </Head>
-
-    <div id="coming-soon">
-      Coming soon. Check out my <Link href="/blog" prefetch><a>blog</a></Link> for now.
-    </div>
-
-    <style jsx>{`
-      #coming-soon {
-        position: absolute;
-        left: 0;
-        right: 0;
-        padding: 40px 20px 0;
-        text-align: center;
-        font-size: 3.2rem;
-        font-weight: 200;
-      }
-    `}</style>
+    <ComingSoon>
+      Coming soon. Check out my <Link href="/blog">blog</Link> for now.
+    </ComingSoon>
   </Page>
 )

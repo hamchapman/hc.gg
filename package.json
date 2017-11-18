@@ -4,20 +4,40 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js"
+    "dev": "node server.js",
+    "format": "yarn prettier --write",
+    "lint": "eslint --ignore-path=.gitignore .",
+    "lint:fix": "eslint --ignore-path=.gitignore . --fix",
+    "postinstall": "if-env NODE_ENV=production && next build || :",
+    "prettier": "prettier 'pages/**/*.js' 'components/**/*.js' 'server/**/*.js'",
+    "start": "if-env NODE_ENV=production && yarn start:prod || yarn start:dev",
+    "start:dev": "yarn && node server/index.js",
+    "start:prod": "NODE_ENV=production node server/index.js"
   },
   "author": "Hamilton Chapman",
   "license": "ISC",
   "dependencies": {
+    "babel-eslint": "^8.0.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "eslint": "^3.0.0",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "5",
+    "eslint-plugin-react": "^7.3.0",
     "express": "^4.16.0",
-    "isomorphic-unfetch": "^2.0.0",
-    "markdown-in-js": "hamchapman/markdown-in-js#master",
-    "marked": "^0.3.6",
+    "glamor": "^2.20.40",
+    "glamorous": "^4.9.7",
+    "highlight.js": "^9.12.0",
+    "if-env": "^1.0.0",
     "next": "^4.1.4",
+    "polished": "^1.7.0",
+    "prettier": "^1.7.0",
+    "prop-types": "^15.5.10",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "redbox-react": "^1.5.0"
+    "react-syntax-highlighter": "^5.7.0",
+    "styled-system": "^1.0.2"
   }
 }

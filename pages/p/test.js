@@ -1,65 +1,22 @@
-import Head from 'next/head'
-import Post from '../../layouts/post'
+import glamorous from 'glamorous';
+import { rem } from 'polished';
 
-import markdown from 'markdown-in-js'
+import { Page, Link } from '../components';
 
+const ComingSoon = glamorous('div')({
+  position: 'absolute',
+  left: '0',
+  right: '0',
+  padding: `${rem(20)} ${rem(10)} 0`,
+  textAlign: 'center',
+  fontSize: rem(3.2),
+  fontWeight: '200',
+});
 
-const Content = () => markdown`
-# Title
-
-## Subtitle
-
-### Subsubtitle
-
-#### Subsubsubtitle
-
-Paragram with also
-- One
-- nice
-- list
-
-And a list:
-
-* lol
-* LOLOLOLOLOLOLOL
-  * testing
-
-
-\`\`\`swift
-func testing() -> String {
-  return "hello"
-}
-\`\`\`
-
-> just a little one
-
-
-> just a little one just a little one just a little one just a little one just a little one just a little one just a little one just a little one just a little one just a little one just a little one
-
-
-----
-
-## HELP ME
-
-> what about this shit?
-
-of some text there's something [and a link](http://www.pointing.to/nowhere) in the middle of some other text that hopefully goes on to multiple lines
-
-<SomethingElse />
-
-*Thank you*
-`
-
-const TestingPost = () =>
-  <Post>
-    <Content />
-  </Post>
-
-
-const SomethingElse = () =>
-  <div className='testing'>
-    LOLOLOLOLOLOLOL
-  </div>
-
-
-export default TestingPost;
+export default () => (
+  <Page>
+    <ComingSoon>
+      Coming soon. Check out my <Link href="/blog">blog</Link> for now.
+    </ComingSoon>
+  </Page>
+)
