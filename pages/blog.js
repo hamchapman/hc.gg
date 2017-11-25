@@ -1,144 +1,110 @@
-// import Page from '../layouts/main'
-// import Link from 'next/link'
-// import Head from 'next/head'
-
-// import { posts } from '../posts'
-
-// export default () => (
-//   <Page>
-//     <Head>
-//       <title>Blog</title>
-//     </Head>
-//     <ul className="posts">
-//       {
-//         posts.map(({ id, date, title, subtitle }) => (
-//           <PostLink
-//             id={id}
-//             key={id}
-//             date={date}
-//             title={title}
-//             subtitle={subtitle}
-//           />
-//         ))
-//       }
-//     </ul>
-//     <style jsx>{`
-//       ul {
-//         padding: 0;
-//         margin: 0;
-//       }
-//     `}</style>
-//   </Page>
-// )
-
-// const PostLink = ({ id, date, title, subtitle }) => (
-//   <Link href={`/p/${id}`} prefetch>
-//     <li>
-//       <div className="titular">
-//         <div className="title">
-//           <span>
-//             { title }
-//           </span>
-//         </div>
-//         <div className="subtitle">
-//           <span>
-//             { subtitle }
-//           </span>
-//         </div>
-//       </div>
-
-//       <div className="date">{ date }</div>
-
-//       <style jsx>{`
-//         li {
-//           overflow: hidden;
-//           list-style: none;
-//           padding-bottom: 12px;
-//           border-bottom: 1px solid #EBEBEB;
-//           margin-bottom: 12px;
-//         }
-
-//         li:hover {
-//           cursor: pointer;
-//         }
-
-//         .title span, .subtitle span {
-//           padding-bottom: 2px;
-//           border-bottom: 2px solid #fff;
-//         }
-
-//         .titular {
-//           float: left;
-//           width: calc(100% - 142px);
-//           line-height: 1.3;
-//         }
-
-//         .title {
-//           font-size: 1.6rem;
-//           margin-bottom: 6px;
-//         }
-
-//         .subtitle {
-//           color: rgba(173, 180, 181, 0.6);
-//           font-size: 1.2rem;
-//         }
-
-//         li:hover .title span {
-//           border-bottom-color: rgba(242, 108, 126, 0.9);
-//         }
-
-//         li:hover .subtitle span {
-//           border-bottom-color: rgba(242, 108, 126, 0.5);
-//         }
-
-//         .date {
-//           width: 142px;
-//           text-align: right;
-//           color: #999;
-//           float: right;
-//           padding-top: 20px;
-//         }
-
-//         a {
-//           text-decoration: none;
-//         }
-
-//         @media (max-width: 500px) {
-//           .titular, .date {
-//             width: 100%;
-//             float: none;
-//             text-align: left;
-//           }
-
-//           .date {
-//             margin-top: 12px;
-//             padding-top: 0;
-//           }
-//         }
-//       `}</style>
-//     </li>
-//   </Link>
-// )
-
+import React from 'react';
+import PropTypes from 'prop-types';
 import glamorous from 'glamorous';
-import { rem } from 'polished';
+import { rem, rgba } from 'polished';
 
-import { Page, Link } from '../components';
+import { Page, Link, Ul, Li } from '../components';
+import { posts } from '../posts';
 
-const ComingSoon = glamorous('div')({
-  position: 'absolute',
-  left: '0',
-  right: '0',
-  padding: `${rem(20)} ${rem(10)} 0`,
-  textAlign: 'center',
-  fontSize: rem(3.2),
-  fontWeight: '200',
+const PostList = glamorous(Ul)({
+  padding: 0,
+  margin: 0
 });
 
-export default () => (
+const PostItem = glamorous(Li)({
+  overflow: 'hidden',
+  listStyle: 'none',
+  padding: '12px 10px 24px',
+  borderBottom: '1px solid #EBEBEB',
+  marginBottom: 0,
+  textDecoration: 'none',
+  '&:hover': {
+    cursor: 'pointer',
+    backgroundColor: rgba(242, 108, 126, 0.1)
+  }
+});
+
+const PostTitleWrapper = glamorous('div')({
+  float: 'left',
+  width: 'calc(100% - 142px)',
+  lineHeight: '1.3',
+  '@media (max-width: 500px)': {
+    width: '100%',
+    float: 'none',
+    textAlign: 'left'
+  }
+});
+
+const PostTitle = glamorous('div')({
+  fontSize: rem(22),
+  marginBottom: '6px'
+});
+
+const PostSubtitle = glamorous('div')({
+  color: rgba(173, 180, 181, 0.6),
+  fontSize: rem(16)
+});
+
+const PostDate = glamorous('div')({
+  width: '142px',
+  textAlign: 'right',
+  color: '#999',
+  float: 'right',
+  paddingTop: '20px',
+  '@media (max-width: 500px)': {
+    width: '100%',
+    float: 'none',
+    textAlign: 'left',
+    marginTop: '12px',
+    paddingTop: 0
+  }
+});
+
+const PostLink = ({ id, date, title, subtitle }) => (
+  <Link href={`/p/${id}`}>
+    <PostItem>
+      <PostTitleWrapper>
+        <PostTitle>
+          <span>{title}</span>
+        </PostTitle>
+        <PostSubtitle>
+          <span>{subtitle}</span>
+        </PostSubtitle>
+      </PostTitleWrapper>
+
+      <PostDate>{date}</PostDate>
+    </PostItem>
+  </Link>
+);
+
+const Blog = () => (
   <Page>
-    <ComingSoon>
-      Coming soon. Check out my <Link href="/blog">blog</Link> for now.
-    </ComingSoon>
+    <PostList>
+      {posts.map(({ id, date, title, subtitle }) => (
+        <PostLink
+          id={id}
+          key={id}
+          date={date}
+          title={title}
+          subtitle={subtitle}
+        />
+      ))}
+    </PostList>
   </Page>
-)
+);
+
+PostLink.propTypes = {
+  id: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired
+};
+
+Blog.propTypes = {
+  id: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired
+};
+
+export default Blog;

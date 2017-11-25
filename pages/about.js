@@ -1,117 +1,109 @@
-// import Page from '../layouts/main'
-// import Link from 'next/link'
-// import Head from 'next/head'
-
-// export default () => (
-//   <Page>
-//     <Head>
-//       <title>Hamilton Chapman</title>
-//     </Head>
-
-//     <div className="home">
-//       <div className="main">
-//         <img src="/static/img/ham.jpg" id="ham" />
-
-//         <div id="spiel">
-//           I’m Hamilton. I build things at{' '}
-//           <Link href="https://pusher.com"><a target="_blank" id="pusher">Pusher</a></Link>. Follow me on{' '}
-//           <Link href="https://twitter.com/hamchapman"><a target="_blank" id="twitter">Twitter</a></Link>, <br />
-//           check out my{' '}
-//           <Link href="/blog"><a id="blog">blog</a></Link>, see my code on{' '}
-//           <Link href="https://github.com/hamchapman"><a target="_blank" id="github">GitHub</a></Link> or{' '}
-//           <Link href="mailto:hamchapman@gmail.com"><a target="_blank" id="email">email</a></Link> me.
-//         </div>
-//       </div>
-//     </div>
-
-//     <style jsx>{`
-//       .home {
-//         display: flex;
-//         justify-content: center;
-//         z-index: -1;
-//       }
-
-//       #ham {
-//         border-radius: 50%;
-//         height: 200px;
-//         width: 200px;
-//         margin: 50px 0;
-//       }
-
-//       #spiel {
-//         font-size: 3.2rem;
-//         font-weight: 200;
-//         line-height: 1.4;
-//         position: absolute;
-//         left: 80px;
-//         right: 80px;
-//         padding: 0 0 30px;
-//       }
-
-//       #twitter {
-//         color: #1da1f2;
-//         border-bottom-color: #1da1f2;
-//       }
-
-//       #github {
-//         color: #28a745;
-//         border-bottom-color: #28a745;
-//       }
-
-//       #blog {
-//         color: #e73a29;
-//         border-bottom-color: #e73a29;
-//       }
-
-//       #email {
-//         color: #ffaa1f;
-//         border-bottom-color: #ffaa1f;
-//       }
-
-//       #pusher {
-//         color: #f32cff;
-//         border-bottom-color: #f32cff;
-//       }
-
-//       .main {
-//         text-align: center;
-//       }
-
-//       @media (max-width: 600px) {
-//         .spiel {
-//           left: 15px;
-//           right: 15px;
-//         }
-
-//         .ham {
-//           margin: 0;
-//         }
-//       }
-//     `}</style>
-//   </Page>
-// )
-
-
+import React from 'react';
+import PropTypes from 'prop-types';
 import glamorous from 'glamorous';
 import { rem } from 'polished';
 
-import { Page, Link } from '../components';
+import { Page, Link, Img } from '../components';
 
-const ComingSoon = glamorous('div')({
+const Ham = glamorous(Img)({
+  borderRadius: '50%',
+  height: '200px',
+  width: '200px',
+  margin: '40px 0',
+  '@media (max-width: 600px)': {
+    margin: '20px 0'
+  }
+});
+
+const Spiel = glamorous('div')({
+  fontSize: rem(50),
+  fontWeight: 100,
+  lineHeight: 1.4,
   position: 'absolute',
+  margin: '300px auto 0',
   left: '0',
   right: '0',
-  padding: `${rem(20)} ${rem(10)} 0`,
+  width: '80%',
+  padding: '0 0 30px',
+  '@media (max-width: 600px)': {
+    fontSize: rem(40),
+    width: '95%',
+    margin: '250px auto 0'
+  }
+});
+
+const Wrapper = glamorous('div')({
   textAlign: 'center',
-  fontSize: rem(3.2),
-  fontWeight: '200',
+  display: 'flex',
+  justifyContent: 'center',
+  zIndex: -1
+});
+
+// TODO: Border bottom too thick and not low enough
+
+const ExternalLink = props => (
+  <Link external {...props}>
+    {props.children}
+  </Link>
+);
+
+ExternalLink.propTypes = {
+  children: PropTypes.node
+};
+
+const ColouredLink = glamorous(ExternalLink)({
+  borderBottom: '3px solid #fff',
+  transition: 'border-bottom-color .2s ease'
+});
+
+const EmailLink = glamorous(ColouredLink)({
+  color: '#ffaa1f',
+  '&:hover': {
+    borderBottomColor: '#ffaa1f'
+  }
+});
+
+const GitHubLink = glamorous(ColouredLink)({
+  color: '#28a745',
+  '&:hover': {
+    borderBottomColor: '#28a745'
+  }
+});
+
+const BlogLink = glamorous(ColouredLink)({
+  color: '#e73a29',
+  '&:hover': {
+    borderBottomColor: '#e73a29'
+  }
+});
+
+const TwitterLink = glamorous(ColouredLink)({
+  color: '#1da1f2',
+  '&:hover': {
+    borderBottomColor: '#1da1f2'
+  }
+});
+
+const PusherLink = glamorous(ColouredLink)({
+  color: '#f32cff',
+  '&:hover': {
+    borderBottomColor: '#f32cff'
+  }
 });
 
 export default () => (
   <Page>
-    <ComingSoon>
-      Coming soon. Check out my <Link href="/blog">blog</Link> for now.
-    </ComingSoon>
-  </Page>
-)
+    <Wrapper>
+      <Ham src="/static/img/ham.jpg" />
 
+      <Spiel>
+        I’m Hamilton. I build things at{' '}
+        <PusherLink href="https://pusher.com">Pusher</PusherLink>. Follow me on{' '}
+        <TwitterLink href="https://twitter.com/hamchapman">Twitter</TwitterLink>,
+        check out my <BlogLink href="/blog">blog</BlogLink>, see my code on{' '}
+        <GitHubLink href="https://github.com/hamchapman">GitHub</GitHubLink> or{' '}
+        <EmailLink href="mailto:hamchapman@gmail.com">email</EmailLink> me.
+      </Spiel>
+    </Wrapper>
+  </Page>
+);

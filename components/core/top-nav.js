@@ -1,47 +1,45 @@
 import React from 'react';
 import glamorous from 'glamorous';
-import { rem } from 'polished';
+import { rem, rgba } from 'polished';
 import PropTypes from 'prop-types';
 
 const options = {
-  propsAreCssOverrides: true,
+  propsAreCssOverrides: true
 };
 
 const gutterStyles = props => {
   const cssRule = {
     column: 'marginBottom',
-    row: 'marginRight',
+    row: 'marginRight'
   }[props.flexDirection];
   return {
     '> :not(:last-child)': {
-      [cssRule]: rem(props.gutter || 0),
-    },
+      [cssRule]: rem(props.gutter || 0)
+    }
   };
 };
 
 const Flex = glamorous('div', {
   ...options,
-  filterProps: ['gutter'],
+  filterProps: ['gutter']
 })(
   {
-    display: 'flex',
+    display: 'flex'
   },
-  gutterStyles,
+  gutterStyles
 );
 
 Flex.defaultProps = {
-  flexDirection: 'row',
+  flexDirection: 'row'
 };
 
 Flex.propTypes = {
-  gutter: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  gutter: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };
-
 
 const Container = glamorous(Flex)({
   position: 'relative',
-  paddingRight: rem(24),
-  height: rem(63),
+  height: rem(63)
 });
 
 const NavigationContainer = glamorous(Flex)({
@@ -49,54 +47,42 @@ const NavigationContainer = glamorous(Flex)({
   alignItems: 'center',
   justifyContent: 'space-between',
   height: rem(63),
-  '@media (max-width: 52rem)': {
-    display: 'none',
-  },
+  borderBottom: '1px solid #eaeaea'
 });
 
 const NavigationList = glamorous('ul')({
-  marginLeft: 'auto',
-  marginRight: 'auto',
+  margin: '0 auto',
   padding: 0,
   listStyle: 'none',
   display: 'flex',
   '& li': {
-    marginLeft: rem(24),
-  },
+    margin: `0 ${rem(12)}`
+  }
 });
-
-// TODO: improve Link component to use here
 
 const Anchor = glamorous('a')({
   textDecoration: 'none',
   color: 'inherit',
   transition: 'color .2s ease',
   '&:hover': {
-    color: '#006EFF',
-  },
+    color: rgba(242, 108, 126, 0.7)
+  }
 });
-
 
 const TopNav = () => (
   <Container>
     <NavigationContainer>
       <NavigationList>
         <li>
-          <Anchor href="/">
-            hc.gg
-          </Anchor>
+          <Anchor href="/">hc.gg</Anchor>
         </li>
 
         <li>
-          <Anchor href="/blog">
-            Blog
-          </Anchor>
+          <Anchor href="/blog">Blog</Anchor>
         </li>
 
         <li>
-          <Anchor href="/about">
-            About
-          </Anchor>
+          <Anchor href="/about">About</Anchor>
         </li>
       </NavigationList>
     </NavigationContainer>

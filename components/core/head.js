@@ -1,7 +1,9 @@
-import Head from 'next/head'
+import React from 'react';
+import PropTypes from 'prop-types';
+import NextHead from 'next/head';
 
-export default ({ title='Ham Chapman', description='Ham Chapman\'s website', background }) =>
-  <Head>
+const Head = ({ title, description = 'Ham Chapman', background }) => (
+  <NextHead>
     <meta charSet="utf-8" />
     <meta httpEquiv="X-UA-Compatible" content="IE=Edge" />
     <title>{title ? `${title} | Ham Chapman` : 'Ham Chapman'}</title>
@@ -32,4 +34,13 @@ export default ({ title='Ham Chapman', description='Ham Chapman\'s website', bac
         background-color: ${background || '#FFFFFF'};
       }
     `}</style>
-  </Head>
+  </NextHead>
+);
+
+Head.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  background: PropTypes.string
+};
+
+export default Head;

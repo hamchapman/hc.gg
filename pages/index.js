@@ -1,3 +1,4 @@
+import React from 'react';
 import glamorous from 'glamorous';
 import { rem } from 'polished';
 
@@ -10,7 +11,7 @@ const ComingSoon = glamorous('div')({
   padding: `${rem(20)} ${rem(10)} 0`,
   textAlign: 'center',
   fontSize: rem(32),
-  fontWeight: '200',
+  fontWeight: '200'
 });
 
 export default () => (
@@ -19,4 +20,4 @@ export default () => (
       Coming soon. Check out my <Link href="/blog">blog</Link> for now.
     </ComingSoon>
   </Page>
-)
+);

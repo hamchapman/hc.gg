@@ -3,25 +3,28 @@ import PropTypes from 'prop-types';
 import NextLink from 'next/link';
 import glamorous from 'glamorous';
 
-const Anchor = glamorous('a')(
-  {
-    textDecoration: 'none',
-    color: 'inherit',
-  },
-  props => {
-    if (!props.unstyled) {
-      return {
-        color: '#006EFF',
-        '&:hover': {
-          textDecoration: 'underline',
-        },
-      };
-    }
-  },
-);
+const Anchor = glamorous('a')({
+  textDecoration: 'none',
+  color: 'inherit'
+});
 
 function Link(props) {
-  const { href, children, unstyled, ...rest } = props;
+  const { href, children, unstyled, external, ...rest } = props;
+  if (external) {
+    return (
+      <NextLink href={href}>
+        <Anchor
+          href={href}
+          unstyled={unstyled}
+          target="_blank"
+          rel="noopener noreferrer"
+          {...rest}
+        >
+          {children}
+        </Anchor>
+      </NextLink>
+    );
+  }
   return (
     <NextLink href={href}>
       <Anchor href={href} unstyled={unstyled} {...rest}>
@@ -32,9 +35,14 @@ function Link(props) {
 }
 
 Link.propTypes = {
-  href: PropTypes.string,
   children: PropTypes.node,
-  unstyled: PropTypes.bool,
+  external: PropTypes.bool,
+  href: PropTypes.string,
+  unstyled: PropTypes.bool
+};
+
+Link.defaultProps = {
+  external: false
 };
 
 export default Link;
