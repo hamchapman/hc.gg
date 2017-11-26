@@ -14,7 +14,7 @@ if (typeof window !== 'undefined') {
   rehydrate(window.__NEXT_DATA__.ids); // eslint-disable-line no-underscore-dangle
 }
 
-const Container = glamorous('div')({
+const Container = glamorous('section')({
   maxWidth: '750px',
   margin: 'auto',
   left: '0',
@@ -23,17 +23,9 @@ const Container = glamorous('div')({
   color: 'rgba(90, 90, 90, 1)'
 });
 
-const Main = glamorous('div')({
-  '@media (min-width: 52rem)': {
-    display: 'flex'
-  }
-});
-
 const Content = glamorous('div')({
   '@media (min-width: 52rem)': {
-    flex: 1,
     height: `calc(100vh - ${rem(63)})`,
-    overflowY: 'auto'
   }
 });
 
@@ -42,36 +34,10 @@ const Page = props => {
   return (
     <ThemeProvider theme={theme}>
       <Aux>
-        <Head>
-          <style>{`
-            * {
-              margin: 0;
-              padding: 0;
-              box-sizing: border-box;
-            }
-            html,
-            body {
-              color: #2B303B;
-              font-size: 16px;
-              font-family: Roboto, sans-serif;
-              text-rendering: optimizeLegibility;
-              -webkit-font-smoothing: antialiased;
-              -moz-osx-font-smoothing: grayscale;
-            }
-            html {
-              height: 100%;
-            }
-            body {
-              height: 100%;
-              background-color: ${background || '#FFFFFF'};
-            }
-          `}</style>
-        </Head>
+        <Head title={documentTitle} />
         <Container>
           <TopNav />
-          <Main>
-            <Content>{children}</Content>
-          </Main>
+          <Content>{children}</Content>
         </Container>
       </Aux>
     </ThemeProvider>

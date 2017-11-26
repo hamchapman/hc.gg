@@ -6,12 +6,13 @@ import { rem } from 'polished';
 import { Page, Link, Img } from '../components';
 
 const Ham = glamorous(Img)({
+  textAlign: 'center',
   borderRadius: '50%',
   height: '200px',
   width: '200px',
-  margin: '40px 0',
+  margin: '40px auto',
   '@media (max-width: 600px)': {
-    margin: '20px 0'
+    margin: '20px auto'
   }
 });
 
@@ -20,7 +21,7 @@ const Spiel = glamorous('div')({
   fontWeight: 100,
   lineHeight: 1.4,
   position: 'absolute',
-  margin: '300px auto 0',
+  margin: '0 auto',
   left: '0',
   right: '0',
   width: '80%',
@@ -28,18 +29,14 @@ const Spiel = glamorous('div')({
   '@media (max-width: 600px)': {
     fontSize: rem(40),
     width: '95%',
-    margin: '250px auto 0'
+    margin: '0 auto'
   }
 });
 
 const Wrapper = glamorous('div')({
   textAlign: 'center',
-  display: 'flex',
-  justifyContent: 'center',
   zIndex: -1
 });
-
-// TODO: Border bottom too thick and not low enough
 
 const ExternalLink = props => (
   <Link external {...props}>
@@ -52,6 +49,7 @@ ExternalLink.propTypes = {
 };
 
 const ColouredLink = glamorous(ExternalLink)({
+  paddingBottom: '2px',
   borderBottom: '3px solid #fff',
   transition: 'border-bottom-color .2s ease'
 });

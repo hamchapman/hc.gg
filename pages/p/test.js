@@ -10,7 +10,7 @@ import {
   Link,
   Ul,
   Li,
-  Page
+  Post
 } from '../../components';
 
 const example1 = `let chatManager = ChatManager(
@@ -50,8 +50,7 @@ func newMessage(message: PCMessage) {
 
 export default () => {
   return (
-    <Page>
-      <Title>Chatkit overview</Title>
+    <Post title={'Testing stuff'}>
       <Heading>Introduction</Heading>
       <Text>
         Chatkit is designed to make it as simple as possible to add chat
@@ -110,7 +109,7 @@ export default () => {
       </Text>
 
       <SubHeading>Connecting a client to the Chatkit servers</SubHeading>
-      <Code language="swift">{example1}</Code>
+      <Code language="swift" heading={"LOLOLOL who knows?"}>{example1}</Code>
 
       <SubHeading>Creating a room</SubHeading>
       <Code language="swift">{example2}</Code>
@@ -183,6 +182,6 @@ export default () => {
           </Link>
         </Li>
       </Ul>
-    </Page>
+    </Post>
   );
 };

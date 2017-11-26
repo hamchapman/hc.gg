@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import glamorous from 'glamorous';
 import { rem } from 'polished';
@@ -6,8 +6,6 @@ import SyntaxHighlighter, {
   registerLanguage
 } from 'react-syntax-highlighter/dist/light';
 import paraisoDark from 'react-syntax-highlighter/dist/styles/paraiso-dark';
-
-import { Aux } from '../index';
 
 registerLanguage('plaintext', () => ({}));
 registerLanguage(
@@ -47,70 +45,120 @@ registerLanguage(
   require('react-syntax-highlighter/dist/languages/typescript').default
 );
 
-const CodeHeading = glamorous('h4')(
+const FullWidther = glamorous('div')({
+  width: '100vw',
+  marginLeft: 'calc((100vw - 100%) / -2)',
+})
+
+const FullWidtherOnHover = (props) => {
+  const { hover, children } = props;
+  if (hover) {
+    return <FullWidther>{children}</FullWidther>
+  }
+  return <div>{children}</div>
+};
+
+const BetteMidler = glamorous('div')({
+  textAlign: 'center',
+});
+
+const CodeBorder = glamorous('div')(
   {
-    fontSize: rem(16),
-    fontWeight: 500,
-    marginBottom: rem(12),
-    'pre + &': {
-      paddingTop: rem(24)
-    }
+    width: '100%',
+    position: 'relative',
   },
   props => {
     return {
-      color: props.onDark ? '#FFFFFF' : '#2B303B'
+      borderBottom: props.onDark ? '1px solid #454545' : '1px solid #eaeaea',
+      color: props.onDark ? '#454545' : '#ABABAB',
     };
   }
 );
+
+const CodeBorderTop = glamorous(CodeBorder)({
+  margin: '24px 0 4px',
+})
+
+const CodeBorderBottom = glamorous(CodeBorder)({
+  margin: '4px 0 24px',
+})
+
+const CodeHeader = glamorous('div')({
+  color: 'inherit',
+  zIndex: 1,
+  marginLeft: '25px',
+  position: 'absolute',
+  marginTop: '-9px',
+  backgroundColor: '#fff',
+  padding: '0 8px',
+  fontSize: rem(14),
+});
+
+const CodeHeading = (props) => {
+  const { onDark, heading } = props;
+  return (
+    <CodeBorderTop onDark={onDark}>
+      {heading && <CodeHeader>{heading}</CodeHeader>}
+    </CodeBorderTop>
+  );
+}
 
 export const InlineCode = glamorous('code')(
   {
     fontFamily: '"Roboto Mono", monospace',
-    fontSize: rem(12),
-    padding: `${rem(2)} ${rem(6)}`,
     borderRadius: 2
   },
   props => {
     return {
-      backgroundColor: props.onDark ? 'rgba(255,255,255,.03)' : '#EFF4F7',
       color: props.onDark ? '#FFFFFF' : '#2B303B'
     };
   }
 );
 
-export function Code(props) {
-  const { language, children, onDark, heading, ...rest } = props;
-  const style = {
-    backgroundColor: onDark ? 'rgba(255,255,255,.03)' : '#F7F9FA',
-    color: onDark ? '#FFFFFF' : '#2B303B',
-    marginBottom: rem(24),
-    padding: rem(18),
-    fontSize: rem(14)
-  };
-  const codeStyle = {
-    style: {
-      fontFamily: '"Roboto Mono", monospace'
-    }
-  };
-  return (
-    <Aux>
-      {heading && <CodeHeading onDark={onDark}>{heading}</CodeHeading>}
-      <SyntaxHighlighter
-        language={language}
-        style={paraisoDark}
-        showLineNumbers
-        customStyle={style}
-        codeTagProps={codeStyle}
-        lineNumberStyle={{
-          fontFamily: '"Roboto Mono", monospace',
-          color: onDark ? 'rgba(255,255,255,.5)' : 'rgba(0,0,0,.5)'
-        }}
-        {...rest}
-      >
-        {children}
-      </SyntaxHighlighter>
-    </Aux>
-  );
+export class Code extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    const { language, children, onDark, heading, ...rest } = this.props;
+    const style = {
+      backgroundColor: onDark ? 'rgba(255,255,255,.03)' : '#FFFFFF',
+      color: onDark ? '#FFFFFF' : '#2B303B',
+      padding: `${rem(12)} 0`,
+      fontSize: rem(18),
+      textAlign: 'left',
+      // display: 'inline-block',
+    };
+    const codeStyle = {
+      style: {
+        fontFamily: '"Roboto Mono", monospace',
+        // float: 'left',
+      }
+    };
+    return (
+      <FullWidtherOnHover>
+        <BetteMidler>
+          <CodeHeading onDark={onDark} heading={heading} />
+          <SyntaxHighlighter
+            language={language}
+            style={paraisoDark}
+            showLineNumbers
+            customStyle={style}
+            codeTagProps={codeStyle}
+            lineNumberStyle={{
+              fontFamily: '"Roboto Mono", monospace',
+              color: onDark ? 'rgba(255,255,255,.5)' : 'rgba(0,0,0,.5)'
+            }}
+            {...rest}
+          >
+            {children}
+          </SyntaxHighlighter>
+          <CodeBorderBottom />
+        </BetteMidler>
+      </FullWidtherOnHover>
+    );
+  }
 }
 
 Code.propTypes = {

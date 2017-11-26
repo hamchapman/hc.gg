@@ -32,6 +32,26 @@ export default class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
+        <style>{`
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
+          html,
+          body {
+            height: 100%;
+            width: 100%;
+            font-size: 16px;
+            font-family: Roboto, sans-serif;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+          }
+          body {
+            overflow: scroll;
+          }
+        `}</style>
       </html>
     );
   }

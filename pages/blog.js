@@ -100,11 +100,4 @@ PostLink.propTypes = {
   title: PropTypes.string.isRequired
 };
 
-Blog.propTypes = {
-  id: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired
-};
-
 export default Blog;

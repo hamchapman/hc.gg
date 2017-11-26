@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import NextHead from 'next/head';
 
-const Head = ({ title, description = 'Ham Chapman', background }) => (
+const Head = ({ title, description = "Ham Chapman's website", background }) => (
   <NextHead>
     <meta charSet="utf-8" />
     <meta httpEquiv="X-UA-Compatible" content="IE=Edge" />
-    <title>{title ? `${title} | Ham Chapman` : 'Ham Chapman'}</title>
+    <title>{title ? title : 'hc.gg'}</title>
     <meta name="author" content="Ham Chapman" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />

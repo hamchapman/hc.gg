@@ -23,3 +23,4 @@ export { default as Aux } from './core/aux';
 export { default as Img } from './core/media';
 
 export { default as Page } from './layouts/page';
+export { default as Post } from './layouts/post';
