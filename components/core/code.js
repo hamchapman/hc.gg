@@ -45,43 +45,36 @@ registerLanguage(
   require('react-syntax-highlighter/dist/languages/typescript').default
 );
 
-const FullWidther = glamorous('div')({
-  width: '100vw',
-  marginLeft: 'calc((100vw - 100%) / -2)',
-})
-
-const FullWidtherOnHover = (props) => {
-  const { hover, children } = props;
-  if (hover) {
-    return <FullWidther>{children}</FullWidther>
+const FullWidtherOnHover = glamorous('div')({
+  display: 'inline-block',
+  maxWidth: '100vw',
+  '@media (max-width: 750px)': {
+    width: '100%',
   }
-  return <div>{children}</div>
-};
-
-const BetteMidler = glamorous('div')({
-  textAlign: 'center',
 });
 
-const CodeBorder = glamorous('div')(
+const CodeStuffWrapper = glamorous('div')(
   {
-    width: '100%',
-    position: 'relative',
+    borderTop: '1px solid #eaeaea',
+    borderBottom: '1px solid #eaeaea',
+    overflowX: 'scroll',
+    minWidth: '750px',
+    width: '750px',
+    transition: 'width 1s, margin-left 1s',
+    '@media (max-width: 750px)': {
+      marginLeft: 0,
+      width: 'inherit',
+    }
   },
   props => {
-    return {
-      borderBottom: props.onDark ? '1px solid #454545' : '1px solid #eaeaea',
-      color: props.onDark ? '#454545' : '#ABABAB',
-    };
+    if (props.hover) {
+      return {
+        width: '100%',
+        marginLeft: 'calc((100% - 750px) / -2)',
+      }
+    }
   }
-);
-
-const CodeBorderTop = glamorous(CodeBorder)({
-  margin: '24px 0 4px',
-})
-
-const CodeBorderBottom = glamorous(CodeBorder)({
-  margin: '4px 0 24px',
-})
+)
 
 const CodeHeader = glamorous('div')({
   color: 'inherit',
@@ -97,9 +90,9 @@ const CodeHeader = glamorous('div')({
 const CodeHeading = (props) => {
   const { onDark, heading } = props;
   return (
-    <CodeBorderTop onDark={onDark}>
+    <div>
       {heading && <CodeHeader>{heading}</CodeHeader>}
-    </CodeBorderTop>
+    </div>
   );
 }
 
@@ -118,27 +111,47 @@ export const InlineCode = glamorous('code')(
 export class Code extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      hovered: false,
+    }
+  }
+
+  onMouseEnter = () => {
+    this.setState({
+      hovered: true,
+    })
+  }
+
+  onMouseLeave = () => {
+    // this.setState({
+    //   hovered: false,
+    // })
   }
 
   render() {
     const { language, children, onDark, heading, ...rest } = this.props;
+    const { hovered } = this.state;
     const style = {
       backgroundColor: onDark ? 'rgba(255,255,255,.03)' : '#FFFFFF',
       color: onDark ? '#FFFFFF' : '#2B303B',
       padding: `${rem(12)} 0`,
       fontSize: rem(18),
-      textAlign: 'left',
-      // display: 'inline-block',
+      display: 'inline-block',
+      overflowX: 'unset',
     };
     const codeStyle = {
       style: {
         fontFamily: '"Roboto Mono", monospace',
-        // float: 'left',
+        display: 'inline-block',
       }
     };
     return (
-      <FullWidtherOnHover>
-        <BetteMidler>
+      <FullWidtherOnHover
+        hover={hovered}
+        onMouseEnter={this.onMouseEnter}
+        onMouseLeave={this.onMouseLeave}
+      >
+        <CodeStuffWrapper hover={hovered}>
           <CodeHeading onDark={onDark} heading={heading} />
           <SyntaxHighlighter
             language={language}
@@ -146,16 +159,20 @@ export class Code extends Component {
             showLineNumbers
             customStyle={style}
             codeTagProps={codeStyle}
+            lineNumberContainerStyle={{
+              float: 'unset',
+              display: 'inline-block',
+              paddingRight: '10px',
+            }}
             lineNumberStyle={{
               fontFamily: '"Roboto Mono", monospace',
-              color: onDark ? 'rgba(255,255,255,.5)' : 'rgba(0,0,0,.5)'
+              color: onDark ? 'rgba(255,255,255,.5)' : 'rgba(0,0,0,.5)',
             }}
             {...rest}
           >
             {children}
           </SyntaxHighlighter>
-          <CodeBorderBottom />
-        </BetteMidler>
+        </CodeStuffWrapper>
       </FullWidtherOnHover>
     );
   }

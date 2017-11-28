@@ -20,12 +20,15 @@ const Container = glamorous('section')({
   left: '0',
   right: '0',
   fontSize: '1.1rem',
-  color: 'rgba(90, 90, 90, 1)'
+  color: 'rgba(90, 90, 90, 1)',
+  '@media (max-width: 750px)': {
+    overflowX: 'hidden',
+  }
 });
 
 const Content = glamorous('div')({
   '@media (min-width: 52rem)': {
-    height: `calc(100vh - ${rem(63)})`,
+    // height: `calc(100vh - ${rem(63)})`,
   }
 });
 

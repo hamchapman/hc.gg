@@ -48,6 +48,8 @@ func newMessage(message: PCMessage) {
   print("Received message: \\(message.text) from \\(message.sender.debugDescription)")
 }`;
 
+const smallCode = `let someTesting = "test"`;
+
 export default () => {
   return (
     <Post title={'Testing stuff'}>
@@ -113,6 +115,9 @@ export default () => {
 
       <SubHeading>Creating a room</SubHeading>
       <Code language="swift">{example2}</Code>
+
+      <SubHeading>Small code</SubHeading>
+      <Code language="swift">{smallCode}</Code>
 
       <SubHeading>Sending a message</SubHeading>
       <Code language="swift">{example3}</Code>
