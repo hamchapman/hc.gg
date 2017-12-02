@@ -60,10 +60,11 @@ const CodeStuffWrapper = glamorous('div')(
     overflowX: 'scroll',
     minWidth: '750px',
     width: '750px',
-    transition: 'width 1s, margin-left 1s',
+    transition: 'width 0.3s, margin-left 0.3s',
     '@media (max-width: 750px)': {
       marginLeft: 0,
       width: 'inherit',
+      minWidth: 'unset',
     }
   },
   props => {
@@ -123,9 +124,9 @@ export class Code extends Component {
   }
 
   onMouseLeave = () => {
-    // this.setState({
-    //   hovered: false,
-    // })
+    this.setState({
+      hovered: false,
+    })
   }
 
   render() {
