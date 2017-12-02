@@ -4,29 +4,32 @@ import glamorous, { P, H1 } from 'glamorous';
 import { rem } from 'polished';
 
 export const Text = glamorous(P)({
-  lineHeight: 1.6,
+  lineHeight: 1.5,
   color: '#4B4F58',
-  marginBottom: rem(24)
+  margin: `${rem(10)} 0`,
+  display: 'inline-block',
 });
 
 export const Title = glamorous(H1)({
-  fontWeight: 500,
+  fontWeight: 600,
   color: '#2B303B',
-  marginBottom: rem(24)
+  margin: `${rem(12)} 0 ${rem(24)}`,
+  textAlign: 'center',
+  fontSize: rem(32),
 });
 
 export const H2 = glamorous('h2')({
   fontWeight: 500,
   color: '#2B303B',
-  marginBottom: rem(12),
+  margin: `${rem(10)} 0`,
   '& a': {
     color: '#006EFF',
     textDecoration: 'none',
     opacity: 0,
-    transition: 'opacity .2s ease'
+    transition: 'opacity .2s ease',
   },
   '&:hover a': {
-    opacity: 1
+    opacity: 1,
   }
 });
 
@@ -46,7 +49,7 @@ export function Heading(props) {
 export const H3 = glamorous('h3')({
   fontWeight: 500,
   color: '#2B303B',
-  marginBottom: rem(12),
+  margin: `${rem(10)} 0`,
   '& a': {
     color: '#006EFF',
     textDecoration: 'none',
@@ -73,17 +76,19 @@ export function SubHeading(props) {
 
 export const H4 = glamorous('h4')({
   fontWeight: 500,
-  marginBottom: rem(12)
+  margin: `${rem(10)} 0`,
 });
 
 export const Ul = glamorous('ul')({
   paddingLeft: rem(16),
-  marginBottom: rem(24)
+  margin: `${rem(10)} 0`,
+  display: 'inline-block',
 });
 
 export const Ol = glamorous('ol')({
   paddingLeft: rem(16),
-  marginBottom: rem(24)
+  margin: `${rem(10)} 0`,
+  display: 'inline-block',
 });
 
 export const Li = glamorous('li')({

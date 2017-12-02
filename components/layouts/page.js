@@ -22,6 +22,7 @@ const Container = glamorous('section')({
   fontSize: '1.1rem',
   color: 'rgba(90, 90, 90, 1)',
   '@media (max-width: 750px)': {
+    padding: '0 12px',
     overflowX: 'hidden',
   }
 });

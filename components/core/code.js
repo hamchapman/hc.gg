@@ -46,6 +46,7 @@ registerLanguage(
 );
 
 const FullWidtherOnHover = glamorous('div')({
+  padding: `${rem(10)} 0`,
   display: 'inline-block',
   maxWidth: '100vw',
   '@media (max-width: 750px)': {
