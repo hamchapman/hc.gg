@@ -28,7 +28,11 @@ export default class MyDocument extends Document {
           <style dangerouslySetInnerHTML={{ __html: this.props.css }} />
           <script src="https://cdn.polyfill.io/v2/polyfill.min.js" />
         </Head>
-        <body>
+        <body
+          style={{
+            fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
+          }}
+        >
           <Main />
           <NextScript />
         </body>
@@ -42,14 +46,18 @@ export default class MyDocument extends Document {
           body {
             height: 100%;
             width: 100%;
+            color: #2B303B;
             font-size: 16px;
-            font-family: Roboto, sans-serif;
             text-rendering: optimizeLegibility;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
           }
+          html {
+            height: 100%;
+          }
           body {
-            overflow: scroll;
+            height: 100%;
+            background-color: #FFFFFF;
           }
         `}</style>
       </html>

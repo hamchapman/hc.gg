@@ -11,7 +11,7 @@ const ComingSoon = glamorous('div')({
   padding: `${rem(20)} ${rem(10)} 0`,
   textAlign: 'center',
   fontSize: rem(32),
-  fontWeight: '200'
+  fontWeight: '200',
 });
 
 export default () => (

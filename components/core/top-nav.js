@@ -4,42 +4,42 @@ import { rem, rgba } from 'polished';
 import PropTypes from 'prop-types';
 
 const options = {
-  propsAreCssOverrides: true
+  propsAreCssOverrides: true,
 };
 
 const gutterStyles = props => {
   const cssRule = {
     column: 'marginBottom',
-    row: 'marginRight'
+    row: 'marginRight',
   }[props.flexDirection];
   return {
     '> :not(:last-child)': {
-      [cssRule]: rem(props.gutter || 0)
-    }
+      [cssRule]: rem(props.gutter || 0),
+    },
   };
 };
 
 const Flex = glamorous('div', {
   ...options,
-  filterProps: ['gutter']
+  filterProps: ['gutter'],
 })(
   {
-    display: 'flex'
+    display: 'flex',
   },
-  gutterStyles
+  gutterStyles,
 );
 
 Flex.defaultProps = {
-  flexDirection: 'row'
+  flexDirection: 'row',
 };
 
 Flex.propTypes = {
-  gutter: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+  gutter: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 const Container = glamorous(Flex)({
   position: 'relative',
-  height: rem(63)
+  height: rem(63),
 });
 
 const NavigationContainer = glamorous(Flex)({
@@ -47,7 +47,7 @@ const NavigationContainer = glamorous(Flex)({
   alignItems: 'center',
   justifyContent: 'space-between',
   height: rem(63),
-  borderBottom: '1px solid #eaeaea'
+  borderBottom: '1px solid #eaeaea',
 });
 
 const NavigationList = glamorous('ul')({
@@ -56,8 +56,8 @@ const NavigationList = glamorous('ul')({
   listStyle: 'none',
   display: 'flex',
   '& li': {
-    margin: `0 ${rem(12)}`
-  }
+    margin: `0 ${rem(12)}`,
+  },
 });
 
 const Anchor = glamorous('a')({
@@ -65,8 +65,8 @@ const Anchor = glamorous('a')({
   color: 'inherit',
   transition: 'color .2s ease',
   '&:hover': {
-    color: rgba(242, 108, 126, 0.7)
-  }
+    color: rgba(242, 108, 126, 0.7),
+  },
 });
 
 const TopNav = () => (

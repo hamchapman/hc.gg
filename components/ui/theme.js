@@ -12,7 +12,7 @@ const systemFontFamilies = createFontNames([
   'Fira Sans',
   'Droid Sans',
   'Helvetica Neue',
-  'sans-serif'
+  'sans-serif',
 ]);
 
 const systemMonoFontFamilies = createFontNames([
@@ -21,7 +21,7 @@ const systemMonoFontFamilies = createFontNames([
   'Liberation Mono',
   'Menlo',
   'Courier',
-  'monospace'
+  'monospace',
 ]);
 
 /* Global defaults */

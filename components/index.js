@@ -16,7 +16,7 @@ export {
   Li,
   Bold,
   Italic,
-  Blockquote
+  Blockquote,
 } from './core/typography';
 export { Code, InlineCode } from './core/code';
 export { default as Aux } from './core/aux';

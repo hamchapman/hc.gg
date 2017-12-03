@@ -5,7 +5,7 @@ import glamorous from 'glamorous';
 
 const Anchor = glamorous('a')({
   textDecoration: 'none',
-  color: 'inherit'
+  color: 'inherit',
 });
 
 function Link(props) {
@@ -13,13 +13,7 @@ function Link(props) {
   if (external) {
     return (
       <NextLink href={href}>
-        <Anchor
-          href={href}
-          unstyled={unstyled}
-          target="_blank"
-          rel="noopener noreferrer"
-          {...rest}
-        >
+        <Anchor href={href} unstyled={unstyled} target="_blank" rel="noopener noreferrer" {...rest}>
           {children}
         </Anchor>
       </NextLink>
@@ -38,11 +32,11 @@ Link.propTypes = {
   children: PropTypes.node,
   external: PropTypes.bool,
   href: PropTypes.string,
-  unstyled: PropTypes.bool
+  unstyled: PropTypes.bool,
 };
 
 Link.defaultProps = {
-  external: false
+  external: false,
 };
 
 export default Link;

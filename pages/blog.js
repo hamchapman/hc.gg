@@ -8,7 +8,7 @@ import { posts } from '../posts';
 
 const PostList = glamorous(Ul)({
   padding: 0,
-  margin: 0
+  margin: 0,
 });
 
 const PostItem = glamorous(Li)({
@@ -20,8 +20,8 @@ const PostItem = glamorous(Li)({
   textDecoration: 'none',
   '&:hover': {
     cursor: 'pointer',
-    backgroundColor: rgba(242, 108, 126, 0.1)
-  }
+    backgroundColor: rgba(242, 108, 126, 0.1),
+  },
 });
 
 const PostTitleWrapper = glamorous('div')({
@@ -31,18 +31,18 @@ const PostTitleWrapper = glamorous('div')({
   '@media (max-width: 500px)': {
     width: '100%',
     float: 'none',
-    textAlign: 'left'
-  }
+    textAlign: 'left',
+  },
 });
 
 const PostTitle = glamorous('div')({
   fontSize: rem(22),
-  marginBottom: '6px'
+  marginBottom: '6px',
 });
 
 const PostSubtitle = glamorous('div')({
   color: rgba(173, 180, 181, 0.6),
-  fontSize: rem(16)
+  fontSize: rem(16),
 });
 
 const PostDate = glamorous('div')({
@@ -56,8 +56,8 @@ const PostDate = glamorous('div')({
     float: 'none',
     textAlign: 'left',
     marginTop: '12px',
-    paddingTop: 0
-  }
+    paddingTop: 0,
+  },
 });
 
 const PostLink = ({ id, date, title, subtitle }) => (
@@ -81,13 +81,7 @@ const Blog = () => (
   <Page>
     <PostList>
       {posts.map(({ id, date, title, subtitle }) => (
-        <PostLink
-          id={id}
-          key={id}
-          date={date}
-          title={title}
-          subtitle={subtitle}
-        />
+        <PostLink id={id} key={id} date={date} title={title} subtitle={subtitle} />
       ))}
     </PostList>
   </Page>
@@ -97,7 +91,7 @@ PostLink.propTypes = {
   id: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
 };
 
 export default Blog;

@@ -9,7 +9,7 @@ const OuterWrapper = glamorous('div')({
   overflowX: 'hidden',
 });
 
-const Post = (props) => {
+const Post = props => {
   const { title, children } = props;
   return (
     <OuterWrapper>
@@ -23,7 +23,7 @@ const Post = (props) => {
 
 Post.propTypes = {
   children: PropTypes.node.isRequired,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
 };
 
 export default Post;

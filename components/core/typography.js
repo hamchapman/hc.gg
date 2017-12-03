@@ -30,7 +30,7 @@ export const H2 = glamorous('h2')({
   },
   '&:hover a': {
     opacity: 1,
-  }
+  },
 });
 
 export function Heading(props) {
@@ -54,11 +54,11 @@ export const H3 = glamorous('h3')({
     color: '#006EFF',
     textDecoration: 'none',
     opacity: 0,
-    transition: 'opacity .2s ease'
+    transition: 'opacity .2s ease',
   },
   '&:hover a': {
-    opacity: 1
-  }
+    opacity: 1,
+  },
 });
 
 export function SubHeading(props) {
@@ -96,35 +96,35 @@ export const Li = glamorous('li')({
   color: '#4B4F58',
   marginBottom: rem(12),
   '& ul': {
-    marginTop: rem(12)
-  }
+    marginTop: rem(12),
+  },
 });
 
 export const Bold = glamorous('strong')({
-  fontWeight: 500
+  fontWeight: 500,
 });
 
 export const Italic = glamorous('em')({
-  fontStyle: 'italic'
+  fontStyle: 'italic',
 });
 
 export const Divider = glamorous('hr')({
   width: '100%',
   border: 'none',
   borderTop: '2px solid #EFF4F7',
-  margin: `${rem(48)} auto`
+  margin: `${rem(48)} auto`,
 });
 
 export const Blockquote = glamorous('blockquote')({
   paddingLeft: rem(8),
   borderLeft: '3px solid #eee',
-  margin: `${rem(6)} 0`
+  margin: `${rem(6)} 0`,
 });
 
 Heading.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 SubHeading.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };

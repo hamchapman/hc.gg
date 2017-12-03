@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import NextHead from 'next/head';
 
-const Head = ({ title, description = "Ham Chapman's website", background }) => (
+const Head = ({ title, description = "Ham Chapman's website" }) => (
   <NextHead>
     <meta charSet="utf-8" />
     <meta httpEquiv="X-UA-Compatible" content="IE=Edge" />
@@ -19,9 +19,10 @@ const Head = ({ title, description = "Ham Chapman's website", background }) => (
       }
       html,
       body {
+        height: 100%;
+        width: 100%;
         color: #2B303B;
         font-size: 16px;
-        font-family: Roboto, sans-serif;
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -31,16 +32,16 @@ const Head = ({ title, description = "Ham Chapman's website", background }) => (
       }
       body {
         height: 100%;
-        background-color: ${background || '#FFFFFF'};
+        background-color: #FFFFFF;
       }
     `}</style>
+    <style>{'body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; '}</style>
   </NextHead>
 );
 
 Head.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
-  background: PropTypes.string
 };
 
 export default Head;

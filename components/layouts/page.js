@@ -24,13 +24,13 @@ const Container = glamorous('section')({
   '@media (max-width: 750px)': {
     padding: '0 12px',
     overflowX: 'hidden',
-  }
+  },
 });
 
 const Content = glamorous('div')({
   '@media (min-width: 52rem)': {
     // height: `calc(100vh - ${rem(63)})`,
-  }
+  },
 });
 
 const Page = props => {
@@ -51,7 +51,7 @@ const Page = props => {
 Page.propTypes = {
   children: PropTypes.node,
   background: PropTypes.string,
-  documentTitle: PropTypes.string
+  documentTitle: PropTypes.string,
 };
 
 export default Page;
