@@ -78,15 +78,32 @@ const PostLink = ({ id, date, title, subtitle }) => (
   </Link>
 );
 
-const Blog = () => (
-  <Page>
-    <PostList>
-      {posts.map(({ id, date, title, subtitle }) => (
-        <PostLink id={id} key={id} date={date} title={title} subtitle={subtitle} />
-      ))}
-    </PostList>
-  </Page>
-);
+const ComingSoon = glamorous('div')({
+  position: 'absolute',
+  left: '0',
+  right: '0',
+  padding: `${rem(20)} ${rem(10)} 0`,
+  textAlign: 'center',
+  fontSize: rem(32),
+  fontWeight: '200',
+});
+
+const Blog = () => {
+  const anyPosts = posts.length > 0;
+
+  return (
+    <Page>
+      {anyPosts && (
+        <PostList>
+          {posts.map(({ id, date, title, subtitle }) => (
+            <PostLink id={id} key={id} date={date} title={title} subtitle={subtitle} />
+          ))}
+        </PostList>
+      )}
+      {!anyPosts && <ComingSoon>Coming soon!</ComingSoon>}
+    </Page>
+  );
+};
 
 PostLink.propTypes = {
   id: PropTypes.string.isRequired,

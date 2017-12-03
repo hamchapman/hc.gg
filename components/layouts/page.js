@@ -27,11 +27,7 @@ const Container = glamorous('section')({
   },
 });
 
-const Content = glamorous('div')({
-  '@media (min-width: 52rem)': {
-    // height: `calc(100vh - ${rem(63)})`,
-  },
-});
+const Content = glamorous('div')({});
 
 const Page = props => {
   const { children, documentTitle, background } = props;

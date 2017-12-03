@@ -6,6 +6,11 @@ import glamorous from 'glamorous';
 const Anchor = glamorous('a')({
   textDecoration: 'none',
   color: 'inherit',
+  borderBottom: '2px solid #dcdbdb',
+  transition: 'color 0.3s ease',
+  '&:hover': {
+    color: '#aba9a9',
+  },
 });
 
 function Link(props) {

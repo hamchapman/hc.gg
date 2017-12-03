@@ -17,7 +17,7 @@ const Ham = glamorous(Img)({
 });
 
 const Spiel = glamorous('div')({
-  fontSize: rem(50),
+  fontSize: rem(48),
   fontWeight: 300,
   lineHeight: 1.3,
   position: 'absolute',
@@ -52,6 +52,20 @@ const ColouredLink = glamorous(ExternalLink)({
   paddingBottom: '2px',
   borderBottom: '3px solid #fff',
   transition: 'border-bottom-color .2s ease',
+});
+
+const SwiftLink = glamorous(ColouredLink)({
+  color: '#f16931',
+  '&:hover': {
+    borderBottomColor: '#f16931',
+  },
+});
+
+const LostLink = glamorous(ColouredLink)({
+  color: '#52bed2',
+  '&:hover': {
+    borderBottomColor: '#52bed2',
+  },
 });
 
 const EmailLink = glamorous(ColouredLink)({
@@ -95,10 +109,13 @@ export default () => (
       <Ham src="/static/img/ham.jpg" />
 
       <Spiel>
-        I’m Hamilton. I build things at <PusherLink href="https://pusher.com">Pusher</PusherLink>.
-        Follow me on <TwitterLink href="https://twitter.com/hamchapman">Twitter</TwitterLink>, check
-        out my <BlogLink href="/blog">blog</BlogLink>, see my code on{' '}
-        <GitHubLink href="https://github.com/hamchapman">GitHub</GitHubLink> or{' '}
+        I’m Hamilton. I build things at <PusherLink href="https://pusher.com">Pusher</PusherLink>. I
+        love <SwiftLink href="https://developer.apple.com/swift/">Swift</SwiftLink>. I believe that
+        the ending of <LostLink href="http://www.imdb.com/title/tt0411008/">Lost</LostLink> was
+        actually pretty good. Follow me on{' '}
+        <TwitterLink href="https://twitter.com/hamchapman">Twitter</TwitterLink>, check out my{' '}
+        <BlogLink href="/blog">blog</BlogLink>, see my code on{' '}
+        <GitHubLink href="https://github.com/hamchapman">GitHub</GitHubLink>, or{' '}
         <EmailLink href="mailto:hamchapman@gmail.com">email</EmailLink> me.
       </Spiel>
     </Wrapper>
