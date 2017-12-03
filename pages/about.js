@@ -18,8 +18,8 @@ const Ham = glamorous(Img)({
 
 const Spiel = glamorous('div')({
   fontSize: rem(50),
-  fontWeight: 100,
-  lineHeight: 1.4,
+  fontWeight: 300,
+  lineHeight: 1.3,
   position: 'absolute',
   margin: '0 auto',
   left: '0',

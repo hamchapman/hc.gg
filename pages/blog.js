@@ -9,6 +9,7 @@ import { posts } from '../posts';
 const PostList = glamorous(Ul)({
   padding: 0,
   margin: 0,
+  display: 'block',
 });
 
 const PostItem = glamorous(Li)({
