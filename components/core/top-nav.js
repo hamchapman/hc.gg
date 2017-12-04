@@ -3,6 +3,8 @@ import glamorous from 'glamorous';
 import { rem, rgba } from 'polished';
 import PropTypes from 'prop-types';
 
+import Link from './link';
+
 const options = {
   propsAreCssOverrides: true,
 };
@@ -60,10 +62,8 @@ const NavigationList = glamorous('ul')({
   },
 });
 
-const Anchor = glamorous('a')({
-  textDecoration: 'none',
-  color: 'inherit',
-  transition: 'color .2s ease',
+const NavLink = glamorous(Link)({
+  borderBottom: 'none',
   '&:hover': {
     color: rgba(242, 108, 126, 0.7),
   },
@@ -74,15 +74,15 @@ const TopNav = () => (
     <NavigationContainer>
       <NavigationList>
         <li>
-          <Anchor href="/">hc.gg</Anchor>
+          <NavLink href="/">hc.gg</NavLink>
         </li>
 
         <li>
-          <Anchor href="/blog">Blog</Anchor>
+          <NavLink href="/blog">Blog</NavLink>
         </li>
 
         <li>
-          <Anchor href="/about">About</Anchor>
+          <NavLink href="/about">About</NavLink>
         </li>
       </NavigationList>
     </NavigationContainer>

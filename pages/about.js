@@ -52,6 +52,9 @@ const ColouredLink = glamorous(ExternalLink)({
   paddingBottom: '2px',
   borderBottom: '3px solid #fff',
   transition: 'border-bottom-color .2s ease',
+  '&:hover': {
+    color: 'inherit',
+  }
 });
 
 const SwiftLink = glamorous(ColouredLink)({

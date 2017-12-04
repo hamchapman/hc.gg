@@ -25,7 +25,7 @@ function Link(props) {
     );
   }
   return (
-    <NextLink href={href}>
+    <NextLink href={href} prefetch>
       <Anchor href={href} unstyled={unstyled} {...rest}>
         {children}
       </Anchor>
