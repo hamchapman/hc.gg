@@ -55,7 +55,7 @@ const ColouredLink = glamorous(ExternalLink)({
   '&:hover': {
     color: 'inherit',
     paddingBottom: '2px',
-  }
+  },
 });
 
 const SwiftLink = glamorous(ColouredLink)({
@@ -114,10 +114,9 @@ export default () => (
 
       <Spiel>
         I’m Hamilton. I build things at <PusherLink href="https://pusher.com">Pusher</PusherLink>. I
-        love <SwiftLink href="https://developer.apple.com/swift/">Swift</SwiftLink>. I believe that
-        the ending of <LostLink href="http://www.imdb.com/title/tt0411008/">Lost</LostLink> was
-        actually pretty good. Follow me on{' '}
-        <TwitterLink href="https://twitter.com/hamchapman">Twitter</TwitterLink>, check out my{' '}
+        love <SwiftLink href="https://developer.apple.com/swift/">Swift</SwiftLink>. I liked the
+        ending of <LostLink href="http://www.imdb.com/title/tt0411008/">Lost</LostLink>. Follow me
+        on <TwitterLink href="https://twitter.com/hamchapman">Twitter</TwitterLink>, check out my{' '}
         <BlogLink href="/blog">blog</BlogLink>, see my code on{' '}
         <GitHubLink href="https://github.com/hamchapman">GitHub</GitHubLink>, or{' '}
         <EmailLink href="mailto:hamchapman@gmail.com">email</EmailLink> me.
