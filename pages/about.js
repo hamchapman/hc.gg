@@ -49,11 +49,12 @@ ExternalLink.propTypes = {
 };
 
 const ColouredLink = glamorous(ExternalLink)({
-  paddingBottom: '2px',
+  paddingBottom: '0',
   borderBottom: '3px solid #fff',
-  transition: 'border-bottom-color .2s ease',
+  transition: 'border-bottom-color .2s ease, padding-bottom .2s ease',
   '&:hover': {
     color: 'inherit',
+    paddingBottom: '2px',
   }
 });
 
