@@ -2,18 +2,15 @@
   "name": "hcgg",
   "version": "0.1.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "build": "next build",
-    "dev": "node server.js",
+    "dev": "node server",
     "format": "yarn prettier --write",
     "lint": "eslint --ignore-path=.gitignore .",
     "lint:fix": "eslint --ignore-path=.gitignore . --fix",
     "postinstall": "if-env NODE_ENV=production && next build || :",
-    "prettier": "prettier 'pages/**/*.js' 'components/**/*.js' 'server/**/*.js'",
-    "start": "if-env NODE_ENV=production && yarn start:prod || yarn start:dev",
-    "start:dev": "yarn && node server/index.js",
-    "start:prod": "NODE_ENV=production node server/index.js"
+    "prettier": "prettier 'pages/**/*.js' 'components/**/*.js' 'server.js'",
+    "start": "NODE_ENV=production node server"
   },
   "author": "Hamilton Chapman",
   "license": "ISC",
