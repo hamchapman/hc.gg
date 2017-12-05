@@ -114,7 +114,7 @@ export default () => (
 
       <Spiel>
         I’m Hamilton. I build things at <PusherLink href="https://pusher.com">Pusher</PusherLink>. I
-        love <SwiftLink href="https://developer.apple.com/swift/">Swift</SwiftLink>. I liked the
+        love <SwiftLink href="https://developer.apple.com/swift/">Swift</SwiftLink>. I like the
         ending of <LostLink href="http://www.imdb.com/title/tt0411008/">Lost</LostLink>. Follow me
         on <TwitterLink href="https://twitter.com/hamchapman">Twitter</TwitterLink>, check out my{' '}
         <BlogLink href="/blog">blog</BlogLink>, see my code on{' '}
