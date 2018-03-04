@@ -22,28 +22,6 @@ registerLanguage(
   require('react-syntax-highlighter/languages/hljs/typescript').default,
 );
 
-// import SyntaxHighlighter, { registerLanguage } from 'react-syntax-highlighter/prism-light';
-// import solarizedlight from 'react-syntax-highlighter/styles/prism/solarizedlight';
-
-// import swift from 'react-syntax-highlighter/languages/prism/swift';
-
-// registerLanguage('plaintext', () => ({}));
-// // registerLanguage('bash', require('react-syntax-highlighter/languages/prism/bash').default);
-// // registerLanguage('diff', require('react-syntax-highlighter/languages/prism/diff').default);
-// // registerLanguage('go', require('react-syntax-highlighter/languages/prism/go').default);
-// // registerLanguage('html', require('react-syntax-highlighter/languages/prism/markup').default);
-// // registerLanguage(
-// //   'javascript',
-// //   require('react-syntax-highlighter/languages/prism/javascript').default,
-// // );
-// // registerLanguage('ruby', require('react-syntax-highlighter/languages/prism/ruby').default);
-// // registerLanguage('rust', require('react-syntax-highlighter/languages/prism/rust').default);
-// registerLanguage('swift', swift);
-// // registerLanguage(
-// //   'typescript',
-// //   require('react-syntax-highlighter/languages/prism/typescript').default,
-// // );
-
 const FullWidtherOnHover = glamorous('div')({
   padding: `${rem(10)} 0`,
   display: 'inline-block',
@@ -55,8 +33,6 @@ const FullWidtherOnHover = glamorous('div')({
 
 const CodeStuffWrapper = glamorous('div')(
   {
-    // borderTop: '1px solid #eaeaea',
-    // borderBottom: '1px solid #eaeaea',
     overflowX: 'scroll',
     minWidth: '750px',
     width: '750px',
@@ -121,7 +97,7 @@ export class Code extends Component {
 
   onMouseLeave = () => {
     this.setState({
-      // hovered: false,
+      hovered: false,
     });
   };
 
@@ -133,23 +109,22 @@ export class Code extends Component {
       color: onDark ? '#FFFFFF' : '#2B303B',
       padding: `${rem(12)} 0`,
       fontSize: rem(18),
-      display: 'inline-block',
+      display: 'inline-flex',
       overflowX: 'unset',
       borderTop: '1px solid #eaeaea',
       borderBottom: '1px solid #eaeaea',
-      // Sort of a great idea - sort of horrible
-      width: '100%',
+      minWidth: '750px',
+      '@media (max-width: 750px)': {
+        minWidth: 'unset',
+      },
     };
     const codeStyle = {
       style: {
         fontFamily: '"Roboto Mono", monospace',
-        display: 'inline-block',
-        width: '100%',
       },
     };
     const lineNumContainerStyle = {
       float: 'left',
-      display: 'inline-block',
       paddingRight: '10px',
       width: '26px',
     };
@@ -166,6 +141,7 @@ export class Code extends Component {
             style={paraisoDark}
             showLineNumbers
             customStyle={style}
+            wrapLines
             codeTagProps={codeStyle}
             lineNumberContainerStyle={lineNumContainerStyle}
             lineNumberStyle={{

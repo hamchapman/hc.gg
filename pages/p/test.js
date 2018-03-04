@@ -1,7 +1,5 @@
 import React from 'react';
 
-import glamorous from 'glamorous';
-
 import {
   Text,
   Title,
@@ -47,18 +45,10 @@ const example3 = `currentUser.addMessage(text: "Hi there! 👋", to: myRoom) { m
 const example4 = `// Inside something that conforms to the PCRoomDelegate protocol
 
 func newMessage(message: PCMessage) {
-  print("Received message: \\(message.text) from \\(message.sender.debugDescription)")
+    print("Received message: \\(message.text) from \\(message.sender.debugDescription)")
 }`;
 
 const smallCode = `let someTesting = "test"`;
-
-const PostText = glamorous('div')({
-  maxWidth: '750px',
-  margin: 'auto',
-  '@media (max-width: 750px)': {
-    width: '90%',
-  },
-});
 
 export default () => {
   return (
