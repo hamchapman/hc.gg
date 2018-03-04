@@ -2,25 +2,47 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import glamorous from 'glamorous';
 import { rem } from 'polished';
-import SyntaxHighlighter, { registerLanguage } from 'react-syntax-highlighter/dist/light';
-import paraisoDark from 'react-syntax-highlighter/dist/styles/paraiso-dark';
+import SyntaxHighlighter, { registerLanguage } from 'react-syntax-highlighter/light';
+import paraisoDark from 'react-syntax-highlighter/styles/hljs/paraiso-dark';
 
 registerLanguage('plaintext', () => ({}));
-registerLanguage('bash', require('react-syntax-highlighter/dist/languages/bash').default);
-registerLanguage('diff', require('react-syntax-highlighter/dist/languages/diff').default);
-registerLanguage('go', require('react-syntax-highlighter/dist/languages/go').default);
-registerLanguage('html', require('react-syntax-highlighter/dist/languages/xml').default);
+registerLanguage('bash', require('react-syntax-highlighter/languages/hljs/bash').default);
+registerLanguage('diff', require('react-syntax-highlighter/languages/hljs/diff').default);
+registerLanguage('go', require('react-syntax-highlighter/languages/hljs/go').default);
+registerLanguage('html', require('react-syntax-highlighter/languages/hljs/xml').default);
 registerLanguage(
   'javascript',
-  require('react-syntax-highlighter/dist/languages/javascript').default,
+  require('react-syntax-highlighter/languages/hljs/javascript').default,
 );
-registerLanguage('ruby', require('react-syntax-highlighter/dist/languages/ruby').default);
-registerLanguage('rust', require('react-syntax-highlighter/dist/languages/rust').default);
-registerLanguage('swift', require('react-syntax-highlighter/dist/languages/swift').default);
+registerLanguage('ruby', require('react-syntax-highlighter/languages/hljs/ruby').default);
+registerLanguage('rust', require('react-syntax-highlighter/languages/hljs/rust').default);
+registerLanguage('swift', require('react-syntax-highlighter/languages/hljs/swift').default);
 registerLanguage(
   'typescript',
-  require('react-syntax-highlighter/dist/languages/typescript').default,
+  require('react-syntax-highlighter/languages/hljs/typescript').default,
 );
+
+// import SyntaxHighlighter, { registerLanguage } from 'react-syntax-highlighter/prism-light';
+// import solarizedlight from 'react-syntax-highlighter/styles/prism/solarizedlight';
+
+// import swift from 'react-syntax-highlighter/languages/prism/swift';
+
+// registerLanguage('plaintext', () => ({}));
+// // registerLanguage('bash', require('react-syntax-highlighter/languages/prism/bash').default);
+// // registerLanguage('diff', require('react-syntax-highlighter/languages/prism/diff').default);
+// // registerLanguage('go', require('react-syntax-highlighter/languages/prism/go').default);
+// // registerLanguage('html', require('react-syntax-highlighter/languages/prism/markup').default);
+// // registerLanguage(
+// //   'javascript',
+// //   require('react-syntax-highlighter/languages/prism/javascript').default,
+// // );
+// // registerLanguage('ruby', require('react-syntax-highlighter/languages/prism/ruby').default);
+// // registerLanguage('rust', require('react-syntax-highlighter/languages/prism/rust').default);
+// registerLanguage('swift', swift);
+// // registerLanguage(
+// //   'typescript',
+// //   require('react-syntax-highlighter/languages/prism/typescript').default,
+// // );
 
 const FullWidtherOnHover = glamorous('div')({
   padding: `${rem(10)} 0`,
@@ -33,8 +55,8 @@ const FullWidtherOnHover = glamorous('div')({
 
 const CodeStuffWrapper = glamorous('div')(
   {
-    borderTop: '1px solid #eaeaea',
-    borderBottom: '1px solid #eaeaea',
+    // borderTop: '1px solid #eaeaea',
+    // borderBottom: '1px solid #eaeaea',
     overflowX: 'scroll',
     minWidth: '750px',
     width: '750px',
@@ -99,7 +121,7 @@ export class Code extends Component {
 
   onMouseLeave = () => {
     this.setState({
-      hovered: false,
+      // hovered: false,
     });
   };
 
@@ -113,12 +135,23 @@ export class Code extends Component {
       fontSize: rem(18),
       display: 'inline-block',
       overflowX: 'unset',
+      borderTop: '1px solid #eaeaea',
+      borderBottom: '1px solid #eaeaea',
+      // Sort of a great idea - sort of horrible
+      width: '100%',
     };
     const codeStyle = {
       style: {
         fontFamily: '"Roboto Mono", monospace',
         display: 'inline-block',
+        width: '100%',
       },
+    };
+    const lineNumContainerStyle = {
+      float: 'left',
+      display: 'inline-block',
+      paddingRight: '10px',
+      width: '26px',
     };
     return (
       <FullWidtherOnHover
@@ -134,11 +167,7 @@ export class Code extends Component {
             showLineNumbers
             customStyle={style}
             codeTagProps={codeStyle}
-            lineNumberContainerStyle={{
-              float: 'unset',
-              display: 'inline-block',
-              paddingRight: '10px',
-            }}
+            lineNumberContainerStyle={lineNumContainerStyle}
             lineNumberStyle={{
               fontFamily: '"Roboto Mono", monospace',
               color: onDark ? 'rgba(255,255,255,.5)' : 'rgba(0,0,0,.5)',

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import glamorous from 'glamorous';
+
 import {
   Text,
   Title,
@@ -49,6 +51,14 @@ func newMessage(message: PCMessage) {
 }`;
 
 const smallCode = `let someTesting = "test"`;
+
+const PostText = glamorous('div')({
+  maxWidth: '750px',
+  margin: 'auto',
+  '@media (max-width: 750px)': {
+    width: '90%',
+  },
+});
 
 export default () => {
   return (

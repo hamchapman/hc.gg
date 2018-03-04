@@ -27,7 +27,9 @@ const Container = glamorous('section')({
   },
 });
 
-const Content = glamorous('div')({});
+const Content = glamorous('div')({
+  // textAlign: 'center',
+});
 
 const Page = props => {
   const { children, documentTitle, background } = props;
