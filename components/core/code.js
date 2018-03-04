@@ -69,6 +69,32 @@ const CodeHeading = props => {
   return <div>{heading && <CodeHeader>{heading}</CodeHeader>}</div>;
 };
 
+function CodePre(props) {
+  const { onDark, children } = props;
+  const extraStyles = {
+    backgroundColor: onDark ? 'rgba(255,255,255,.03)' : '#FFFFFF',
+    color: onDark ? '#FFFFFF' : '#2B303B',
+  }
+  return (
+    <StyledPre style={extraStyles}>
+      {children}
+    </StyledPre>
+  );
+}
+
+const StyledPre = glamorous('pre')({
+  padding: `${rem(12)} 0`,
+  fontSize: rem(18),
+  display: 'inline-flex',
+  overflowX: 'unset',
+  borderTop: '1px solid #eaeaea',
+  borderBottom: '1px solid #eaeaea',
+  minWidth: '750px',
+  '@media (max-width: 750px)': {
+    minWidth: 'unset',
+  },
+})
+
 export const InlineCode = glamorous('code')(
   {
     fontFamily: '"Roboto Mono", monospace',
@@ -104,20 +130,6 @@ export class Code extends Component {
   render() {
     const { language, children, onDark, heading, ...rest } = this.props;
     const { hovered } = this.state;
-    const style = {
-      backgroundColor: onDark ? 'rgba(255,255,255,.03)' : '#FFFFFF',
-      color: onDark ? '#FFFFFF' : '#2B303B',
-      padding: `${rem(12)} 0`,
-      fontSize: rem(18),
-      display: 'inline-flex',
-      overflowX: 'unset',
-      borderTop: '1px solid #eaeaea',
-      borderBottom: '1px solid #eaeaea',
-      minWidth: '750px',
-      '@media (max-width: 750px)': {
-        minWidth: 'unset',
-      },
-    };
     const codeStyle = {
       style: {
         fontFamily: '"Roboto Mono", monospace',
@@ -140,7 +152,7 @@ export class Code extends Component {
             language={language}
             style={paraisoDark}
             showLineNumbers
-            customStyle={style}
+            PreTag={CodePre}
             wrapLines
             codeTagProps={codeStyle}
             lineNumberContainerStyle={lineNumContainerStyle}
@@ -149,6 +161,7 @@ export class Code extends Component {
               color: onDark ? 'rgba(255,255,255,.5)' : 'rgba(0,0,0,.5)',
             }}
             {...rest}
+            onDark={onDark}
           >
             {children}
           </SyntaxHighlighter>
