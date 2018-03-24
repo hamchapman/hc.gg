@@ -95,6 +95,25 @@ const StyledPre = glamorous('pre')({
   },
 })
 
+// Shamelessly copied from hph: https://github.com/hph/www.hph.is/blob/3d2136e539a00abff6189125809396f14a6a8bfb/src/components/code.js#L50-L66
+function trim(string) {
+  let lines = string.split('\n');
+  let minIndentation = Infinity;
+  lines.forEach(line => {
+    const index = line.search(/\S/);
+    if (index > -1 && index < minIndentation) {
+      minIndentation = index;
+    }
+  });
+  if (lines[0].search(/\S/)) {
+    lines = lines.slice(1);
+  }
+  if (lines[lines.length - 1].search(/\S/)) {
+    lines = lines.slice(0, -1);
+  }
+  return lines.map(line => line.slice(minIndentation));
+}
+
 export const InlineCode = glamorous('code')(
   {
     fontFamily: '"Roboto Mono", monospace',
@@ -130,6 +149,7 @@ export class Code extends Component {
   render() {
     const { language, children, onDark, heading, ...rest } = this.props;
     const { hovered } = this.state;
+    const trimmedLines = trim(children).join("\n");
     const codeStyle = {
       style: {
         fontFamily: '"Roboto Mono", monospace',
@@ -163,7 +183,7 @@ export class Code extends Component {
             {...rest}
             onDark={onDark}
           >
-            {children}
+            {trimmedLines}
           </SyntaxHighlighter>
         </CodeStuffWrapper>
       </FullWidtherOnHover>

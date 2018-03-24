@@ -13,43 +13,6 @@ import {
   Post,
 } from '../../components';
 
-const example1 = `let chatManager = ChatManager(
-  instanceId: "your-chatkit-instance-id"
-  tokenProvider: yourTokenProvider
-)
-
-chatManager.connect(delegate: yourDelegate) { currentUser, error in
-  guard error == nil else {
-    print("Error connecting: \\(error.localizedDescription)")
-    return
-  }
-  print("Successfully connected")
-}`;
-
-const example2 = `currentUser.createRoom(name: "my room name") { room, error in
-  guard error == nil else {
-    print("Error creating room: \\(error.localizedDescription)")
-    return
-  }
-  print("Created room called \\(room.name)")
-}`;
-
-const example3 = `currentUser.addMessage(text: "Hi there! 👋", to: myRoom) { message, error in
-  guard error == nil else {
-    print("Error adding message to \\(room.name): \\(error.localizedDescription)")
-    return
-  }
-  print("Added message to \\(myRoom.name)")
-}`;
-
-const example4 = `// Inside something that conforms to the PCRoomDelegate protocol
-
-func newMessage(message: PCMessage) {
-    print("Received message: \\(message.text) from \\(message.sender.debugDescription)")
-}`;
-
-const smallCode = `let someTesting = "test"`;
-
 export default () => {
   return (
     <Post title={'Testing stuff'}>
@@ -95,20 +58,59 @@ export default () => {
 
       <SubHeading>Connecting a client to the Chatkit servers</SubHeading>
       <Code language="swift" heading={'LOLOLOL who knows?'}>
-        {example1}
+        {`
+          let chatManager = ChatManager(
+              instanceId: "your-chatkit-instance-id",
+              tokenProvider: yourTokenProvider
+          )
+
+          chatManager.connect(delegate: yourDelegate) { currentUser, error in
+              guard error == nil else {
+                  print("Error connecting: \\(error.localizedDescription)")
+                  return
+              }
+              print("Successfully connected")
+          }
+        `}
       </Code>
 
       <SubHeading>Creating a room</SubHeading>
-      <Code language="swift">{example2}</Code>
+      <Code language="swift">{`
+        currentUser.createRoom(name: "my room name") { room, error in
+            guard error == nil else {
+                print("Error creating room: \\(error.localizedDescription)")
+                return
+            }
+            print("Created room called \\(room.name)")
+        }
+      `}</Code>
 
       <SubHeading>Small code</SubHeading>
-      <Code language="swift">{smallCode}</Code>
+      <Code language="swift">{`let someTesting = "test"`}</Code>
 
       <SubHeading>Sending a message</SubHeading>
-      <Code language="swift">{example3}</Code>
+      <Code language="swift">
+        {`
+          currentUser.addMessage(text: "Hi there! 👋", to: myRoom) { message, error in
+              guard error == nil else {
+                  print("Error adding message to \\(room.name): \\(error.localizedDescription)")
+                  return
+              }
+              print("Added message to \\(myRoom.name)")
+          }
+        `}
+      </Code>
 
       <SubHeading>Receiving messages</SubHeading>
-      <Code language="swift">{example4}</Code>
+      <Code language="swift">
+        {`
+          // Inside something that conforms to the PCRoomDelegate protocol
+
+          func newMessage(message: PCMessage) {
+              print("Received message: \\(message.text) from \\(message.sender.debugDescription)")
+          }
+        `}
+      </Code>
 
       <Heading>Setup overview</Heading>
       <Text>A typical setup comprises of three components:</Text>
