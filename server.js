@@ -1,6 +1,8 @@
 const express = require('express');
 const nextApp = require('next');
 
+const posts = require('./posts.json');
+
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
 const app = nextApp({ dev });
@@ -16,6 +18,10 @@ app.prepare().then(() => {
     } else {
       next();
     }
+  });
+
+  server.get('/posts', (req, res) => {
+    res.json(posts);
   });
 
   server.get('*', (req, res) => {
