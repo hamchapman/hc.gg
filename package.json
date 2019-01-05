@@ -6,9 +6,7 @@
     "build": "next build",
     "dev": "node server",
     "format": "yarn prettier --write",
-    "lint": "eslint --ignore-path=.gitignore .",
-    "lint:fix": "eslint --ignore-path=.gitignore . --fix",
-    "postinstall": "next build",
+    "lint": "eslint --ignore-path=.gitignore . --fix",
     "prettier": "prettier 'pages/**/*.js' 'components/**/*.js' 'server.js'",
     "start": "NODE_ENV=production node server"
   },

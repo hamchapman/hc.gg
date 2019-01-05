@@ -1,3 +1,7 @@
 {
-  "version": 1
+  "version": 2,
+  "name": "hcgg",
+  "builds": [
+    { "src": "next.config.js", "use": "@now/next" }
+  ]
 }
