@@ -1,14 +1,15 @@
 {
-  "name": "hcgg",
+  "name": "hc.gg",
   "version": "0.1.0",
-  "description": "",
+  "description": "Hamilton Chapman's website",
   "scripts": {
     "build": "next build",
-    "dev": "node server",
+    "dev": "next",
     "format": "yarn prettier --write",
     "lint": "eslint --ignore-path=.gitignore . --fix",
+    "now-build": "next build",
     "prettier": "prettier 'pages/**/*.js' 'components/**/*.js' 'server.js'",
-    "start": "NODE_ENV=production node server"
+    "start": "next start"
   },
   "author": "Hamilton Chapman",
   "license": "ISC",
