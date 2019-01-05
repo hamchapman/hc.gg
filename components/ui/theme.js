@@ -1,5 +1,4 @@
-const createFontNames = fonts =>
-  fonts.map(name => (name.match(/\s/) ? `"${name}"` : name)).join(', ');
+const createFontNames = fonts => fonts.map(name => (name.match(/\s/) ? `"${name}"` : name)).join(', ');
 
 const systemFontFamilies = createFontNames([
   '-apple-system',

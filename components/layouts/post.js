@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import glamorous from 'glamorous';
+import styled from '@emotion/styled';
 
 import { Title } from '../index';
 import Page from './page';
 
-const OuterWrapper = glamorous('div')({
+const OuterWrapper = styled('div')({
   overflowX: 'hidden',
 });
 

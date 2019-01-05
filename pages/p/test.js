@@ -15,7 +15,7 @@ import {
 
 export default () => {
   return (
-    <Post title={'Testing stuff'}>
+    <Post title="Testing stuff">
       <Heading>Introduction</Heading>
       <Text>
         Chatkit is designed to make it as simple as possible to add chat features to your apps. It
@@ -50,14 +50,20 @@ export default () => {
       <Heading>Sample code</Heading>
       <Text>
         Below are a few snippets of sample Swift code to give you an idea of what integrating with
-        Chatkit looks like in an iOS application. We also provide{' '}
-        <Link href="https://github.com/pusher/chatkit-android">Android</Link> and{' '}
-        <Link href="https://github.com/pusher/chatkit-client-js">JavaScript</Link> SDKs if you are
+        Chatkit looks like in an iOS application. We also provide
+        {' '}
+        <Link href="https://github.com/pusher/chatkit-android">Android</Link>
+        {' '}
+and
+        {' '}
+        <Link href="https://github.com/pusher/chatkit-client-js">JavaScript</Link>
+        {' '}
+SDKs if you are
         building for Android or the web.
       </Text>
 
       <SubHeading>Connecting a client to the Chatkit servers</SubHeading>
-      <Code language="swift" heading={'LOLOLOL who knows?'}>
+      <Code language="swift" heading="LOLOLOL who knows?">
         {`
           let chatManager = ChatManager(
               instanceId: "your-chatkit-instance-id",
@@ -75,7 +81,8 @@ export default () => {
       </Code>
 
       <SubHeading>Creating a room</SubHeading>
-      <Code language="swift">{`
+      <Code language="swift">
+        {`
         currentUser.createRoom(name: "my room name") { room, error in
             guard error == nil else {
                 print("Error creating room: \\(error.localizedDescription)")
@@ -83,10 +90,11 @@ export default () => {
             }
             print("Created room called \\(room.name)")
         }
-      `}</Code>
+      `}
+      </Code>
 
       <SubHeading>Small code</SubHeading>
-      <Code language="swift">{`let someTesting = "test"`}</Code>
+      <Code language="swift">let someTesting = "test"</Code>
 
       <SubHeading>Sending a message</SubHeading>
       <Code language="swift">
@@ -122,8 +130,11 @@ export default () => {
         </Li>
         <Li>Clients: Your many happy users loving their new chat functionality.</Li>
         <Li>
-          Your server: Used for clients to request{' '}
-          <Link href="/chatkit/authentication">authentication tokens</Link> and to make admin
+          Your server: Used for clients to request
+          {' '}
+          <Link href="/chatkit/authentication">authentication tokens</Link>
+          {' '}
+and to make admin
           requests to Chatkit.
         </Li>
       </Ul>
@@ -141,7 +152,11 @@ export default () => {
         <Li>Max users in a room: 100</Li>
         <Li>Max message size: 5KB</Li>
         <Li>
-          Max <InlineCode>custom_data</InlineCode> size when creating users: 5KB
+          Max
+          {' '}
+          <InlineCode>custom_data</InlineCode>
+          {' '}
+size when creating users: 5KB
         </Li>
         <Li>Max number of messages retrieved on resuming a room subscription: 100</Li>
         <Li>Max users that can be added or removed per HTTP request: 10</Li>

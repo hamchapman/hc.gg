@@ -1,20 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { rehydrate } from 'glamor';
-import glamorous, { ThemeProvider } from 'glamorous';
+import styled from '@emotion/styled';
+import { hydrate } from 'emotion';
+import { ThemeProvider } from 'emotion-theming';
 import { rem } from 'polished';
 
 import { TopNav, Aux, Head } from '../index';
 import * as theme from '../ui/theme';
 
-// Adds server generated styles to glamor cache.
-// Has to run before any `style()` calls
 // '__NEXT_DATA__.ids' is set in '_document.js'
 if (typeof window !== 'undefined') {
-  rehydrate(window.__NEXT_DATA__.ids); // eslint-disable-line no-underscore-dangle
+  hydrate(window.__NEXT_DATA__.ids); // eslint-disable-line no-underscore-dangle
 }
 
-const Container = glamorous('section')({
+const Container = styled('section')({
   maxWidth: '750px',
   margin: 'auto',
   left: '0',
@@ -27,7 +26,7 @@ const Container = glamorous('section')({
   },
 });
 
-const Content = glamorous('div')({
+const Content = styled('div')({
   // textAlign: 'center',
 });
 

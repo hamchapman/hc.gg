@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import NextLink from 'next/link';
-import glamorous from 'glamorous';
+import styled from '@emotion/styled';
 
-const Anchor = glamorous('a')({
+const Anchor = styled('a')({
   textDecoration: 'none',
   color: 'inherit',
   borderBottom: '2px solid #dcdbdb',
@@ -14,7 +14,9 @@ const Anchor = glamorous('a')({
 });
 
 function Link(props) {
-  const { href, children, unstyled, external, ...rest } = props;
+  const {
+    href, children, unstyled, external, ...rest
+  } = props;
   if (external) {
     return (
       <NextLink href={href}>

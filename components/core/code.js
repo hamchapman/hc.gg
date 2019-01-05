@@ -1,28 +1,49 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import glamorous from 'glamorous';
+import styled from '@emotion/styled';
 import { rem } from 'polished';
-import SyntaxHighlighter, { registerLanguage } from 'react-syntax-highlighter/light';
-import paraisoDark from 'react-syntax-highlighter/styles/hljs/paraiso-dark';
+import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
+import paraisoDark from 'react-syntax-highlighter/dist/styles/hljs/paraiso-dark';
 
-registerLanguage('plaintext', () => ({}));
-registerLanguage('bash', require('react-syntax-highlighter/languages/hljs/bash').default);
-registerLanguage('diff', require('react-syntax-highlighter/languages/hljs/diff').default);
-registerLanguage('go', require('react-syntax-highlighter/languages/hljs/go').default);
-registerLanguage('html', require('react-syntax-highlighter/languages/hljs/xml').default);
-registerLanguage(
+SyntaxHighlighter.registerLanguage('plaintext', () => ({}));
+SyntaxHighlighter.registerLanguage(
+  'bash',
+  require('react-syntax-highlighter/dist/languages/hljs/bash').default,
+);
+SyntaxHighlighter.registerLanguage(
+  'diff',
+  require('react-syntax-highlighter/dist/languages/hljs/diff').default,
+);
+SyntaxHighlighter.registerLanguage(
+  'go',
+  require('react-syntax-highlighter/dist/languages/hljs/go').default,
+);
+SyntaxHighlighter.registerLanguage(
+  'html',
+  require('react-syntax-highlighter/dist/languages/hljs/xml').default,
+);
+SyntaxHighlighter.registerLanguage(
   'javascript',
-  require('react-syntax-highlighter/languages/hljs/javascript').default,
+  require('react-syntax-highlighter/dist/languages/hljs/javascript').default,
 );
-registerLanguage('ruby', require('react-syntax-highlighter/languages/hljs/ruby').default);
-registerLanguage('rust', require('react-syntax-highlighter/languages/hljs/rust').default);
-registerLanguage('swift', require('react-syntax-highlighter/languages/hljs/swift').default);
-registerLanguage(
+SyntaxHighlighter.registerLanguage(
+  'ruby',
+  require('react-syntax-highlighter/dist/languages/hljs/ruby').default,
+);
+SyntaxHighlighter.registerLanguage(
+  'rust',
+  require('react-syntax-highlighter/dist/languages/hljs/rust').default,
+);
+SyntaxHighlighter.registerLanguage(
+  'swift',
+  require('react-syntax-highlighter/dist/languages/hljs/swift').default,
+);
+SyntaxHighlighter.registerLanguage(
   'typescript',
-  require('react-syntax-highlighter/languages/hljs/typescript').default,
+  require('react-syntax-highlighter/dist/languages/hljs/typescript').default,
 );
 
-const FullWidtherOnHover = glamorous('div')({
+const FullWidtherOnHover = styled('div')({
   padding: `${rem(10)} 0`,
   display: 'inline-block',
   maxWidth: '100vw',
@@ -31,7 +52,7 @@ const FullWidtherOnHover = glamorous('div')({
   },
 });
 
-const CodeStuffWrapper = glamorous('div')(
+const CodeStuffWrapper = styled('div')(
   {
     overflowX: 'scroll',
     minWidth: '750px',
@@ -53,7 +74,7 @@ const CodeStuffWrapper = glamorous('div')(
   },
 );
 
-const CodeHeader = glamorous('div')({
+const CodeHeader = styled('div')({
   color: 'inherit',
   zIndex: 1,
   marginLeft: '25px',
@@ -74,15 +95,11 @@ function CodePre(props) {
   const extraStyles = {
     backgroundColor: onDark ? 'rgba(255,255,255,.03)' : '#FFFFFF',
     color: onDark ? '#FFFFFF' : '#2B303B',
-  }
-  return (
-    <StyledPre style={extraStyles}>
-      {children}
-    </StyledPre>
-  );
+  };
+  return <StyledPre style={extraStyles}>{children}</StyledPre>;
 }
 
-const StyledPre = glamorous('pre')({
+const StyledPre = styled('pre')({
   padding: `${rem(12)} 0`,
   fontSize: rem(18),
   display: 'inline-flex',
@@ -93,7 +110,7 @@ const StyledPre = glamorous('pre')({
   '@media (max-width: 750px)': {
     minWidth: 'unset',
   },
-})
+});
 
 // Shamelessly copied from hph: https://github.com/hph/www.hph.is/blob/3d2136e539a00abff6189125809396f14a6a8bfb/src/components/code.js#L50-L66
 function trim(string) {
@@ -114,7 +131,7 @@ function trim(string) {
   return lines.map(line => line.slice(minIndentation));
 }
 
-export const InlineCode = glamorous('code')(
+export const InlineCode = styled('code')(
   {
     fontFamily: '"Roboto Mono", monospace',
     borderRadius: 2,
@@ -147,9 +164,11 @@ export class Code extends Component {
   };
 
   render() {
-    const { language, children, onDark, heading, ...rest } = this.props;
+    const {
+      language, children, onDark, heading, ...rest
+    } = this.props;
     const { hovered } = this.state;
-    const trimmedLines = trim(children).join("\n");
+    const trimmedLines = trim(children).join('\n');
     const codeStyle = {
       style: {
         fontFamily: '"Roboto Mono", monospace',

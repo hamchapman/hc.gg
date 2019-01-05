@@ -1,18 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import glamorous from 'glamorous';
+import styled from '@emotion/styled';
 import { rem, rgba } from 'polished';
 
-import { Page, Link, Ul, Li } from '../components';
+import {
+  Page, Link, Ul, Li
+} from '../components';
 import { posts } from '../posts';
 
-const PostList = glamorous(Ul)({
+const PostList = styled(Ul)({
   padding: 0,
   margin: 0,
   display: 'block',
 });
 
-const PostItem = glamorous(Li)({
+const PostItem = styled(Li)({
   overflow: 'hidden',
   listStyle: 'none',
   padding: '12px 10px 24px',
@@ -25,7 +27,7 @@ const PostItem = glamorous(Li)({
   },
 });
 
-const PostTitleWrapper = glamorous('div')({
+const PostTitleWrapper = styled('div')({
   float: 'left',
   width: 'calc(100% - 142px)',
   lineHeight: '1.3',
@@ -36,17 +38,17 @@ const PostTitleWrapper = glamorous('div')({
   },
 });
 
-const PostTitle = glamorous('div')({
+const PostTitle = styled('div')({
   fontSize: rem(22),
   marginBottom: '6px',
 });
 
-const PostSubtitle = glamorous('div')({
+const PostSubtitle = styled('div')({
   color: rgba(173, 180, 181, 0.6),
   fontSize: rem(16),
 });
 
-const PostDate = glamorous('div')({
+const PostDate = styled('div')({
   width: '142px',
   textAlign: 'right',
   color: '#999',
@@ -61,7 +63,9 @@ const PostDate = glamorous('div')({
   },
 });
 
-const PostLink = ({ id, date, title, subtitle }) => (
+const PostLink = ({
+  id, date, title, subtitle
+}) => (
   <Link href={`/p/${id}`}>
     <PostItem>
       <PostTitleWrapper>
@@ -78,7 +82,7 @@ const PostLink = ({ id, date, title, subtitle }) => (
   </Link>
 );
 
-const ComingSoon = glamorous('div')({
+const ComingSoon = styled('div')({
   position: 'absolute',
   left: '0',
   right: '0',
@@ -95,7 +99,9 @@ const Blog = () => {
     <Page>
       {anyPosts && (
         <PostList>
-          {posts.map(({ id, date, title, subtitle }) => (
+          {posts.map(({
+            id, date, title, subtitle
+          }) => (
             <PostLink id={id} key={id} date={date} title={title} subtitle={subtitle} />
           ))}
         </PostList>

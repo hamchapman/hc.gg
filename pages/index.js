@@ -1,10 +1,10 @@
 import React from 'react';
-import glamorous from 'glamorous';
+import styled from '@emotion/styled';
 import { rem } from 'polished';
 
 import { Page, Link } from '../components';
 
-const ComingSoon = glamorous('div')({
+const ComingSoon = styled('div')({
   position: 'absolute',
   left: '0',
   right: '0',
@@ -17,7 +17,11 @@ const ComingSoon = glamorous('div')({
 export default () => (
   <Page>
     <ComingSoon>
-      Coming soon. Check out my <Link href="/blog">blog</Link> for now.
+      Coming soon. Check out my
+      {' '}
+      <Link href="/blog">blog</Link>
+      {' '}
+for now.
     </ComingSoon>
   </Page>
 );

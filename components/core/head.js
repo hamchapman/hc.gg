@@ -6,12 +6,13 @@ const Head = ({ title, description = "Ham Chapman's website" }) => (
   <NextHead>
     <meta charSet="utf-8" />
     <meta httpEquiv="X-UA-Compatible" content="IE=Edge" />
-    <title>{title ? title : 'hc.gg'}</title>
+    <title>{title || 'hc.gg'}</title>
     <meta name="author" content="Ham Chapman" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>{`
+    <style>
+      {`
       * {
         margin: 0;
         padding: 0;
@@ -34,7 +35,8 @@ const Head = ({ title, description = "Ham Chapman's website" }) => (
         height: 100%;
         background-color: #FFFFFF;
       }
-    `}</style>
+    `}
+    </style>
     <style>{'body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; '}</style>
   </NextHead>
 );

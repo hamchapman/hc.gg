@@ -1,5 +1,5 @@
 import React from 'react';
-import glamorous from 'glamorous';
+import styled from '@emotion/styled';
 import { rem, rgba } from 'polished';
 import PropTypes from 'prop-types';
 
@@ -21,7 +21,7 @@ const gutterStyles = props => {
   };
 };
 
-const Flex = glamorous('div', {
+const Flex = styled('div', {
   ...options,
   filterProps: ['gutter'],
 })(
@@ -39,12 +39,12 @@ Flex.propTypes = {
   gutter: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
-const Container = glamorous(Flex)({
+const Container = styled(Flex)({
   position: 'relative',
   height: rem(63),
 });
 
-const NavigationContainer = glamorous(Flex)({
+const NavigationContainer = styled(Flex)({
   flex: 1,
   alignItems: 'center',
   justifyContent: 'space-between',
@@ -52,7 +52,7 @@ const NavigationContainer = glamorous(Flex)({
   borderBottom: '1px solid #eaeaea',
 });
 
-const NavigationList = glamorous('ul')({
+const NavigationList = styled('ul')({
   margin: '0 auto',
   padding: 0,
   listStyle: 'none',
@@ -62,7 +62,7 @@ const NavigationList = glamorous('ul')({
   },
 });
 
-const NavLink = glamorous(Link)({
+const NavLink = styled(Link)({
   borderBottom: 'none',
   '&:hover': {
     color: rgba(242, 108, 126, 0.7),
