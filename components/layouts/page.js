@@ -27,7 +27,7 @@ const Container = styled('section')({
 });
 
 const Content = styled('div')({
-  // textAlign: 'center',
+  paddingBottom: '500px',
 });
 
 const Page = props => {
