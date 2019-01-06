@@ -108,7 +108,7 @@ const StyledPre = styled('pre')({
   borderBottom: '1px solid #eaeaea',
   minWidth: '750px',
   '@media (max-width: 750px)': {
-    minWidth: 'unset',
+    minWidth: '100%',
   },
 });
 
