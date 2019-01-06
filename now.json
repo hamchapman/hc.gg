@@ -2,7 +2,7 @@
   "version": 2,
   "name": "hc.gg",
   "builds": [
-    { "src": "next.config.js", "use": "@now/next@canary" },
+    { "src": "next.config.js", "use": "@now/next" },
     { "src": "api/posts/index.js", "use": "@now/node" }
   ]
 }
